@@ -6,15 +6,18 @@
   "scripts": {
     "install-all": "concurrently \"npm install\" \"cd client && npm install\"",
     "client": "cd client && npm start",
-    "server": "cd server && npm run devstart",
-    "dev": "concurrently \"cd server && npm run devstart\" \"cd client && npm run start\"",
+    "server": "nodemon ./bin/www",
+    "dev": "concurrently \"cd server && npm run server\" \"cd client && npm run start\"",
     "build": "cd client && npm run build",
-    "start": "cd server && npm start",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "start": "cd server && node ./bin/www",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/UFWebApps/Blog-Docker.git"
+  },
+  "engines": {
+    "node": "v16.14.0"
   },
   "keywords": [],
   "author": "Tom Ari",
