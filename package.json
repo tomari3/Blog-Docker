@@ -10,7 +10,7 @@
     "dev": "concurrently \"cd server && npm run devstart\" \"cd client && npm run start\"",
     "build": "cd client && npm run build",
     "start": "cd server && npm start",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
