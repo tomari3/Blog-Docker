@@ -4,22 +4,36 @@
  * Module dependencies.
  */
 
+<<<<<<< HEAD
 const app = require("../app");
 const debug = require("debug")("blog-api:server");
 const http = require("http");
+=======
+var app = require("../app");
+var debug = require("debug")("blog-api:server");
+var http = require("http");
+>>>>>>> 94400431d1800a06ab225f20c2e95245f5ddcfb1
 
 /**
  * Get port from environment and store in Express.
  */
 
+<<<<<<< HEAD
 const port = normalizePort(process.env.PORT || "3000");
+=======
+var port = normalizePort(process.env.PORT || "3000");
+>>>>>>> 94400431d1800a06ab225f20c2e95245f5ddcfb1
 app.set("port", port);
 
 /**
  * Create HTTP server.
  */
 
+<<<<<<< HEAD
 const server = http.createServer(app);
+=======
+var server = http.createServer(app);
+>>>>>>> 94400431d1800a06ab225f20c2e95245f5ddcfb1
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -34,7 +48,11 @@ server.on("listening", onListening);
  */
 
 function normalizePort(val) {
+<<<<<<< HEAD
   const port = parseInt(val, 10);
+=======
+  var port = parseInt(val, 10);
+>>>>>>> 94400431d1800a06ab225f20c2e95245f5ddcfb1
 
   if (isNaN(port)) {
     // named pipe
@@ -58,16 +76,28 @@ function onError(error) {
     throw error;
   }
 
+<<<<<<< HEAD
   const bind = typeof port === "string" ? `Pipe ${port}` : `Port ${port}`;
+=======
+  var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+>>>>>>> 94400431d1800a06ab225f20c2e95245f5ddcfb1
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case "EACCES":
+<<<<<<< HEAD
       console.error(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     case "EADDRINUSE":
       console.error(`${bind} is already in use`);
+=======
+      console.error(bind + " requires elevated privileges");
+      process.exit(1);
+      break;
+    case "EADDRINUSE":
+      console.error(bind + " is already in use");
+>>>>>>> 94400431d1800a06ab225f20c2e95245f5ddcfb1
       process.exit(1);
       break;
     default:
@@ -80,7 +110,13 @@ function onError(error) {
  */
 
 function onListening() {
+<<<<<<< HEAD
   const addr = server.address();
   const bind = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
+=======
+  var addr = server.address();
+  var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+  debug("Listening on " + bind);
+>>>>>>> 94400431d1800a06ab225f20c2e95245f5ddcfb1
 }
