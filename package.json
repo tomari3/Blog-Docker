@@ -6,10 +6,10 @@
   "scripts": {
     "install-all": "concurrently \"npm install\" \"cd client && npm install\"",
     "client": "cd client && npm start",
-    "server": "nodemon app.js",
+    "server": "nodemon server/bin/www",
     "dev": "concurrently \"cd server && npm run server\" \"cd client && npm run start\"",
     "build": "cd client && npm run build",
-    "start": "cd server && node app.js",
+    "start": "cd server && node server/bin/www",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
