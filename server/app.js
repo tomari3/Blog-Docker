@@ -37,24 +37,16 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "../client/build", "index.html"));
   });
 }
-app.use("api/auth", require("./routes/auth"));
 
-app.use(passport.authenticate("access", { session: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("api/posts", require("./routes/api/posts"));
-app.use("api/users", require("./routes/api/users"));
-app.use("api/tags", require("./routes/api/tags"));
+app.use("/api/auth", require("./routes/auth"));
 
-if (process.env.NODE_ENV === "production") {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(passport.authenticate("access", { session: false }));
+app.use("/api/posts", require("./routes/api/posts"));
+app.use("/api/users", require("./routes/api/users"));
+app.use("/api/tags", require("./routes/api/tags"));
 
-  // Handle React routing, return all requests to React app
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-  });
-}
 // app.use(require("./routes/api"));
 
 // catch 404 and forward to error handler

@@ -42,6 +42,7 @@ exports.signup = [
 ];
 
 exports.login = async (req, res) => {
+  console.log("hey");
   const { cookies } = req;
   const { username, password } = req.body;
   if (!username || !password) {

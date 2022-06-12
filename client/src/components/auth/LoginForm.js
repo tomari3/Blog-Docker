@@ -121,6 +121,7 @@ export const LoginForm = () => {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
+      console.log(data);
       setAuth(data);
       dispatch({ type: RESET_FORM });
       navigate(referer, { replace: true });
@@ -128,6 +129,7 @@ export const LoginForm = () => {
       if (error.response.data === "Unauthorized")
         setSeverError("name or password incorrect");
       else setSeverError("server error");
+      console.log(error);
       setTimeout(() => {
         setSeverError("");
       }, 5000);
