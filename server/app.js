@@ -28,6 +28,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
+if (process.env.NODE_ENV === "production") {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, "../client/build")));
+
+  // Handle React routing, return all requests to React app
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+  });
+}
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/auth", require("./routes/auth"));
@@ -43,16 +53,6 @@ app.use("/tags", require("./routes/api/tags"));
 app.use((req, res, next) => {
   next(createError(404));
 });
-
-if (process.env.NODE_ENV === "production") {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, "../client/build")));
-
-  // Handle React routing, return all requests to React app
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-  });
-}
 
 // error handler
 app.use((err, req, res) => {
