@@ -14,7 +14,7 @@ export const ProfilePicture = ({ userData, noPop }) => {
   const [profilePictureOptions, setProfilePictureOptions] = useState(false);
 
   const DEFAULT_AVATAR =
-    "https://res.cloudinary.com/dv32amiu2/image/upload/v1654707049/cbwzhcmw2v6xvhq5nytk.jpg";
+    "https://res.cloudinary.com/dv32amiu2/image/upload/v1655052243/1_W35QUSvGpcLuxPo3SRTH4w_xr6bsn.png";
   const src = userData?.avatar?.src || DEFAULT_AVATAR;
 
   const openOptions = () => {
