@@ -28,6 +28,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
+app.use("/auth", require("./routes/auth"));
+
 if (process.env.NODE_ENV === "production") {
   // Serve any static files
   app.use(express.static(path.join(__dirname, "../client/build")));
@@ -39,8 +41,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.use(express.static(path.join(__dirname, "public")));
-
-app.use("/auth", require("./routes/auth"));
 
 app.use(passport.authenticate("access", { session: false }));
 app.use("/posts", require("./routes/api/posts"));
