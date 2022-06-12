@@ -28,6 +28,7 @@ export const HomePage = () => {
         .then((data) => {
           setPostsData(data[0].data);
           setTagsData(data[1].data);
+          console.log(data);
         })
         .catch((error) => {
           console.error(error);
