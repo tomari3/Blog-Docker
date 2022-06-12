@@ -125,8 +125,9 @@ export const LoginForm = () => {
       dispatch({ type: RESET_FORM });
       navigate(referer, { replace: true });
     } catch (error) {
-      console.error(error);
-
+      if (error.response.data === "Unauthorized")
+        setSeverError("name or password incorrect");
+      else setSeverError("server error");
       setTimeout(() => {
         setSeverError("");
       }, 5000);
