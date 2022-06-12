@@ -28,10 +28,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/auth", require("./routes/auth"));
-
-app.use(passport.authenticate("access", { session: false }));
-
 if (process.env.NODE_ENV === "production") {
   // Serve any static files
   app.use(express.static(path.join(__dirname, "../client/build")));
@@ -41,7 +37,9 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "../client/build", "index.html"));
   });
 }
+app.use("/auth", require("./routes/auth"));
 
+app.use(passport.authenticate("access", { session: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/posts", require("./routes/api/posts"));
