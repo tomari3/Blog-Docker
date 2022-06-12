@@ -47,6 +47,15 @@ app.use("/posts", require("./routes/api/posts"));
 app.use("/users", require("./routes/api/users"));
 app.use("/tags", require("./routes/api/tags"));
 
+if (process.env.NODE_ENV === "production") {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, "../client/build")));
+
+  // Handle React routing, return all requests to React app
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+  });
+}
 // app.use(require("./routes/api"));
 
 // catch 404 and forward to error handler
