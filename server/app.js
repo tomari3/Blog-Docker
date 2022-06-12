@@ -38,8 +38,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.use(express.static(path.join(__dirname, "public")));
-
 app.use("/api/auth", require("./routes/auth"));
 
 app.use(passport.authenticate("access", { session: false }));
