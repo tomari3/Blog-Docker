@@ -120,9 +120,6 @@ export const PostForm = ({ className, setPostsData, setPostModal }) => {
         }
       } else formData.append(key, formState[key].value);
     }
-    for (const key of Object.keys(formState)) {
-      console.log(key, formState[key].value);
-    }
 
     const postUrl = `posts`;
 
@@ -136,7 +133,10 @@ export const PostForm = ({ className, setPostsData, setPostModal }) => {
       // console.log(data);
     } catch (error) {
       console.log(error);
-      setSeverError(error.response.data);
+      if (error.response.status === 500)
+        setSeverError(
+          "server is having trouble uploading the image, it's probably not your fault"
+        );
 
       setTimeout(() => {
         setSeverError("");
@@ -228,7 +228,7 @@ export const PostForm = ({ className, setPostsData, setPostModal }) => {
               <Image />
               <input
                 className={formState.images.value ? "active" : ""}
-                accept=".png,.jpeg"
+                accept=".png,.jpeg,.jpg"
                 type="file"
                 name="images"
                 multiple="multiple"

@@ -7,7 +7,6 @@ const Media = require("../models/Media");
 const { cloudinary } = require("../config/cloudinary");
 
 exports.getAllPosts = async (req, res) => {
-  console.log("here");
   const posts = await Post.find({})
     .sort({ date: -1 })
     .populate({
@@ -91,7 +90,6 @@ exports.newPost = async (req, res) => {
   const mediaURIs = [];
   if (req.files) {
     const { files } = req;
-
     await Promise.all(
       files.map(async (file) => {
         const { url, public_id, resource_type } =
