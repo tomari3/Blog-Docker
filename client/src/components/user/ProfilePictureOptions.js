@@ -80,7 +80,7 @@ export const ProfilePictureOptions = ({
         setResponseStatus("");
       }, 4000);
     } catch (error) {
-      setResponseInfo(handleResponseMessage(error));
+      setResponseInfo(handleResponseMessage(error.response.data));
       setResponseStatus("error");
 
       setTimeout(() => {

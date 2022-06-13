@@ -5,7 +5,7 @@ export const StyledToast = styled.article`
   position: absolute;
 
   display: grid;
-  grid-template-columns: 48px 1fr 48px;
+  grid-template-columns: auto 1fr 48px;
   align-items: center;
   justify-content: center;
   padding: 0 var(--paddingSmall);
@@ -27,6 +27,7 @@ export const StyledToast = styled.article`
 
   .toast-svg {
     div {
+      width: 48px;
       aspect-ratio: 1;
       background-color: ${({ type }) => handleType(type)};
     }
