@@ -2,8 +2,12 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const StyledLayout = styled(motion.main)`
-  margin: 10rem auto;
+  margin: var(--paddingBigger) auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: var(--paddingBigger);
+  max-width: 1200px;
+
+  main {
+    gap: var(--paddingBigger);
+  }
 `;

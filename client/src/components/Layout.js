@@ -1,16 +1,14 @@
 import { Outlet } from "react-router-dom";
+import { StyledLayout } from "../styles/StyledLayout";
 
 import { Header } from "./header/Header";
-import { Footer } from "./footer/Footer";
 
 export const Layout = ({ toggle }) => {
   return (
-    <>
+    <StyledLayout>
       <Header toggle={toggle} />
 
       <Outlet />
-
-      {/* <Footer /> */}
-    </>
+    </StyledLayout>
   );
 };

@@ -37,30 +37,18 @@ export const HomePage = () => {
     fetchData();
   }, [axiosPrivate]);
 
-  const e = {
-    m: w > 500,
-    l: w > 1200,
-    LEFT: <div key={"l"} className="l"></div>,
-    MIDDLE: (
-      <div key={"m"} className="m">
+  return (
+    <StyledHomePage className="HomePage">
+      <div className="posts">
         <PostFormPrompt setPostsData={setPostsData} />
         <MemoPostGallery postsData={postsData} />
       </div>
-    ),
-    RIGHT: (
-      <div key={"r"} className="r">
-        <UsersPanel />
-        <MemoTagsPanel tagsData={tagsData} />
-      </div>
-    ),
-  };
-
-  return (
-    <StyledHomePage className="HomePage">
-      {{
-        [e.m]: [e.LEFT, e.MIDDLE],
-        [e.l]: [e.LEFT, e.MIDDLE, e.RIGHT],
-      }[true] || e.MIDDLE}
+      {w > 1000 && (
+        <div className="side-panels">
+          <UsersPanel />
+          <MemoTagsPanel tagsData={tagsData} />
+        </div>
+      )}
     </StyledHomePage>
   );
 };

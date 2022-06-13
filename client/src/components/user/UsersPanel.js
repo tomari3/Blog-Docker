@@ -29,6 +29,7 @@ export const UsersPanel = () => {
 
   const users = usersData.map((user, index) => {
     if (index < 6) return <UserBanner key={user._id} userData={user} />;
+    else return null;
   });
 
   return (

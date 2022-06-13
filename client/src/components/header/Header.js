@@ -10,12 +10,12 @@ export const Header = ({ toggle, dark }) => {
 
   return (
     <StyledHeader className="Header">
+      <div className="logo">
+        <StyledLink $color to="/">
+          <h1>BHFC</h1>
+        </StyledLink>
+      </div>
       <div className="header">
-        <div className="header_logo">
-          <StyledLink $color to="/">
-            BHFC
-          </StyledLink>
-        </div>
         <div className="header_search">
           <input />
         </div>
