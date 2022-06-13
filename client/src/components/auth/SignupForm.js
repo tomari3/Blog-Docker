@@ -1,4 +1,5 @@
 import React, { useState, useReducer, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import axios from "../../utils/axios";
 
@@ -63,6 +64,10 @@ export const SignupForm = () => {
   const [showError, setShowError] = useState(false);
   const [serverError, setSeverError] = useState("");
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const referer = (location.state && location.state.referer) || "/";
+
   const userRef = useRef();
 
   const formSubmitHandler = (e) => {
@@ -119,6 +124,7 @@ export const SignupForm = () => {
     try {
       // eslint-disable-next-line no-unused-vars
       await axios.post(postUrl, payload);
+      navigate(referer, { replace: true });
     } catch (error) {
       setSeverError(handleErrorMessage(error));
 
