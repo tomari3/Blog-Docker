@@ -27,8 +27,8 @@ export const UsersPanel = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const users = usersData.map((user) => {
-    return <UserBanner key={user._id} userData={user} />;
+  const users = usersData.map((user, index) => {
+    if (index < 10) return <UserBanner key={user._id} userData={user} />;
   });
 
   return (
