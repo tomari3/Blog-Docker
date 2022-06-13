@@ -136,7 +136,7 @@ export const ProfilePictureOptions = ({
             </div>
             <div className="profile-picture-options_options_option">
               <StyledButton>
-                <Edit /> <p>delete</p>
+                <Edit /> <p>edit</p>
               </StyledButton>
             </div>
           </div>
