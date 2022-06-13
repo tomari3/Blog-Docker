@@ -45,10 +45,22 @@ export const ProfilePictureOptions = ({
       const { data } = await axiosPrivate.put(postUrl, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      console.log(data);
+
+      setResponseInfo(handleResponseMessage(data));
+      setResponseStatus("success");
+
+      setTimeout(() => {
+        setResponseStatus("");
+      }, 4000);
+
       formData = new FormData();
     } catch (error) {
-      console.log(error);
+      setResponseInfo(handleResponseMessage(error));
+      setResponseStatus("error");
+
+      setTimeout(() => {
+        setResponseStatus("");
+      }, 4000);
     }
   };
 
@@ -60,6 +72,7 @@ export const ProfilePictureOptions = ({
 
     try {
       const { data } = await axiosPrivate.delete(postUrl, { data: payload });
+      console.log(data);
       setResponseInfo(handleResponseMessage(data));
       setResponseStatus("success");
 
@@ -67,7 +80,6 @@ export const ProfilePictureOptions = ({
         setResponseStatus("");
       }, 4000);
     } catch (error) {
-      console.log(error);
       setResponseInfo(handleResponseMessage(error));
       setResponseStatus("error");
 
@@ -116,7 +128,7 @@ export const ProfilePictureOptions = ({
                   change
                   <input
                     type="file"
-                    accept=".png,.jpeg"
+                    accept=".png,.jpeg,.jpg"
                     name="cover"
                     onChange={handleFileInput}
                     onInput={sendNewPicture}

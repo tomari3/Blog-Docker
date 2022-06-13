@@ -25,11 +25,11 @@
     {
       "user":
       {
-        "AVATAR_UPDATED": "avatar successfully updated, changed will take effect after refresh",
-        "AVATAR_DELETED": "avatar successfully deleted, changed will take effect after refresh",
+        "AVATAR_UPDATED": "avatar successfully updated, changes will take effect after refresh",
+        "AVATAR_DELETED": "avatar successfully deleted, changes will take effect after refresh",
 
-        "COVER_UPDATED": "cover successfully updated, changed will take effect after refresh",
-        "COVER_DELETED": "cover successfully deleted, changed will take effect after refresh"
+        "COVER_UPDATED": "cover successfully updated, changes will take effect after refresh",
+        "COVER_DELETED": "cover successfully deleted, changes will take effect after refresh"
       }
     }
 }
