@@ -7,7 +7,7 @@ import { useAuth } from "../../hooks/useAuth";
 
 import { UserBanner } from "../user/UserBanner";
 
-export const PostFormPrompt = ({ setPostsData, avatar }) => {
+export const PostFormPrompt = ({ setPostsData }) => {
   const [postModal, setPostModal] = useState(false);
   const { auth } = useAuth();
   return (
