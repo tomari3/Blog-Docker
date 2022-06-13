@@ -4,6 +4,7 @@ import { ProfileMenu } from "./ProfileMenu";
 
 import { StyledHeader } from "../../styles/StyledHeader";
 import { StyledLink } from "../../styles/StyledLink";
+import { StyledButton } from "../../styles/StyledButton";
 
 export const Header = ({ toggle, dark }) => {
   const { auth } = useAuth();
@@ -16,9 +17,6 @@ export const Header = ({ toggle, dark }) => {
         </StyledLink>
       </div>
       <div className="header">
-        <div className="header_search">
-          <input />
-        </div>
         <nav className="header_nav">
           {!auth?.username ? (
             <>
@@ -36,8 +34,9 @@ export const Header = ({ toggle, dark }) => {
           )}
         </nav>
       </div>
-
-      {!auth?.username ? <div></div> : <></>}
+      <div className="post-prompt">
+        <StyledButton $color>post</StyledButton>
+      </div>
     </StyledHeader>
   );
 };

@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 
 export const StyledHeader = styled(motion.header)`
   height: 400px;
-
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding);
   .logo {
     padding: var(--padding);
   }
 
   .header {
-    background-color: var(--primaryLighter);
-    border: 1px solid var(--primaryDark);
     padding: var(--padding);
     width: clamp(50px, 300px, 25vw);
     flex: 1;
@@ -27,6 +27,18 @@ export const StyledHeader = styled(motion.header)`
   }
 
   .header_nav_profile-menu {
-    position: relative;
+  }
+
+  .post-prompt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      width: 80%;
+      height: 48px;
+      border-radius: var(--radiusBig);
+      font-size: var(--fontSizeMedium);
+      font-weight: bold;
+    }
   }
 `;
