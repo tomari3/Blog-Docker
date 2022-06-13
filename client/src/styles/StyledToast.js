@@ -20,7 +20,7 @@ export const StyledToast = styled.article`
   box-shadow: var(--shadow) 0px 2px 5px -1px, var(--shadow) 0px 1px 3px -1px;
 
   z-index: 2;
-  transition: all 0.5s cubic-bezier(0.33, 0.92, 0, 1.17);
+  transition: all 0.8s cubic-bezier(1, -1.04, 0.01, 1.96);
   &.is-on {
     bottom: var(--position);
   }
