@@ -5,7 +5,7 @@ import { ProfilePicture } from "./ProfilePicture";
 import { StyledLink } from "../../styles/StyledLink";
 import { StyledBanner } from "../../styles/StyledBanner";
 
-export const UserBanner = ({ userData }) => {
+export const UserBanner = ({ userData, prefix }) => {
   return (
     <StyledBanner className="UserBanner">
       <div className="banner">
@@ -16,7 +16,7 @@ export const UserBanner = ({ userData }) => {
         </div>
         <div className="banner_info">
           <StyledLink to={`/${userData.username}`}>
-            {userData.username}
+            {prefix} {userData.username}
           </StyledLink>
         </div>
       </div>

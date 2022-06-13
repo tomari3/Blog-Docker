@@ -13,7 +13,7 @@ export const PostFormPrompt = ({ setPostsData, avatar }) => {
   return (
     <>
       <div style={{ padding: "1rem 0" }}>
-        <UserBanner userData={auth} />
+        <UserBanner userData={auth} prefix={"hey"} />
         <StyledForm onClick={() => setPostModal(!postModal)} className="inline">
           <div className="form-field fake">
             <input spellCheck="true" type="text" name="content" disabled />
