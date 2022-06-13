@@ -4,6 +4,7 @@ export const StyledToast = styled.article`
   --position: calc(var(--paddingBigger) * 2);
   position: absolute;
 
+  width: max-content;
   display: grid;
   grid-template-columns: auto 1fr 48px;
   align-items: center;
@@ -13,6 +14,7 @@ export const StyledToast = styled.article`
 
   left: var(--position);
   bottom: -100px;
+  opacity: 0;
 
   height: calc(50px + var(--padding));
   border-radius: var(--radiusBigger);
@@ -22,6 +24,7 @@ export const StyledToast = styled.article`
   z-index: 2;
   transition: all 0.8s cubic-bezier(1, -1.04, 0.01, 1.96);
   &.is-on {
+    opacity: 1;
     bottom: var(--position);
   }
 

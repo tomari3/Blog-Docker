@@ -87,6 +87,22 @@ exports.deleteUserAvatarPicture = async (req, res) => {
   return res.status(203).json("avatar deleted");
 };
 
+exports.deleteUserCoverPicture = async (req, res) => {
+  const { _id } = req.user;
+  const { public_id } = req.body;
+  const cover = await Media.findOne({ public_id });
+  if (!cover) return res.status(404).json("no photo to delete");
+  if (!_id.equals(cover?.author))
+    return res.status(401).json("cannot edit others photos");
+
+  await User.findByIdAndUpdate(_id, { $unset: { cover: 1 } });
+
+  await cloudinary.uploader.destroy(cover.public_id);
+  await cover.deleteOne();
+
+  return res.status(203).json("cover deleted");
+};
+
 exports.getPostsByUsername = async (req, res) => {
   const user = await User.findOne({ username: req.params.id });
   const posts = await Post.find({ author: user })

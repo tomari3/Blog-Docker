@@ -95,43 +95,45 @@ export const CoverOptions = ({ public_id }) => {
   }, [newCoverFile]);
 
   return (
-    <StyledOptions
-      onClick={(e) => e.stopPropagation()}
-      className="CoverOptions"
-    >
+    <>
       <Toast
         type={responseStatus}
         msg={responseInfo}
         setResponseStatus={setResponseStatus}
       />
-      <StyledButton ref={ignored} onClick={() => setOpen(!open)}>
-        <Dots />
-      </StyledButton>
-      {open && (
-        <div ref={ref} className="options">
-          <div className="options_option">
-            <Camera />
-            <StyledButton className="hidden-input-file">
-              <StyledFileInput>
-                <label>
-                  change
-                  <input
-                    type="file"
-                    accept=".png,.jpeg"
-                    name="cover"
-                    onChange={handleFileInput}
-                    onInput={sendNewCover}
-                  />
-                </label>
-              </StyledFileInput>
-            </StyledButton>
+      <StyledOptions
+        onClick={(e) => e.stopPropagation()}
+        className="CoverOptions"
+      >
+        <StyledButton ref={ignored} onClick={() => setOpen(!open)}>
+          <Dots />
+        </StyledButton>
+        {open && (
+          <div ref={ref} className="options">
+            <div className="options_option">
+              <Camera />
+              <StyledButton className="hidden-input-file">
+                <StyledFileInput>
+                  <label>
+                    change
+                    <input
+                      type="file"
+                      accept=".png,.jpeg"
+                      name="cover"
+                      onChange={handleFileInput}
+                      onInput={sendNewCover}
+                    />
+                  </label>
+                </StyledFileInput>
+              </StyledButton>
+            </div>
+            <div className="options_option">
+              <Trash />
+              <StyledButton onClick={sendDelete}>delete</StyledButton>
+            </div>
           </div>
-          <div className="options_option">
-            <Trash />
-            <StyledButton onClick={sendDelete}>delete</StyledButton>
-          </div>
-        </div>
-      )}
-    </StyledOptions>
+        )}
+      </StyledOptions>
+    </>
   );
 };

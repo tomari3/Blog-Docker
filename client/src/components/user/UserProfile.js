@@ -24,9 +24,7 @@ export const UserProfile = ({ userData }) => {
           </div>
           <div className="user_details_image-wrapper_actions">
             {isAuthor && (
-              <div>
-                <CoverOptions public_id={userData?.cover?.public_id} />
-              </div>
+              <CoverOptions public_id={userData?.cover?.public_id} />
             )}
           </div>
           <div className="user_details_image-wrapper_profile">

@@ -1,6 +1,7 @@
 import messages from "./messages-en.json";
 
 export const handleResponseMessage = (res) => {
+  console.log(res);
   const status = res?.status || res?.response?.status;
   const data = res || res?.response?.data;
   // LOGIN
@@ -16,6 +17,9 @@ export const handleResponseMessage = (res) => {
     return messages.error.user.NO_PHOTO_TO_DELETE;
   if (data === "avatar deleted") return messages.success.user.AVATAR_DELETED;
   if (data === "avatar updated") return messages.success.user.AVATAR_UPDATED;
+
+  if (data === "cover deleted") return messages.success.user.COVER_DELETED;
+  if (data === "cover updated") return messages.success.user.COVER_UPDATED;
 
   if (status === 500) return messages.error.server.SERVER_DOWN;
 };

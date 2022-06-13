@@ -12,7 +12,8 @@ router.route("/:id").get(userController.getUser);
 
 router
   .route("/:id/cover")
-  .put(upload.single("cover"), userController.updateUserCoverPicture);
+  .put(upload.single("cover"), userController.updateUserCoverPicture)
+  .delete(userController.deleteUserCoverPicture);
 
 router
   .route("/:id/avatar")
