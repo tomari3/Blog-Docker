@@ -9,7 +9,7 @@ import { StyledButton } from "../../styles/StyledButton";
 export const Header = ({ toggle, dark }) => {
   const { auth } = useAuth();
 
-  return (
+  return auth._id ? (
     <StyledHeader className="Header">
       <div className="logo">
         <StyledLink $color to="/">
@@ -38,5 +38,5 @@ export const Header = ({ toggle, dark }) => {
         <StyledButton $color>post</StyledButton>
       </div>
     </StyledHeader>
-  );
+  ) : null;
 };

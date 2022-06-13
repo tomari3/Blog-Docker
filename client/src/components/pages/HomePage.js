@@ -6,6 +6,7 @@ import { MemoPostGallery } from "../post/PostGallery";
 import { MemoTagsPanel } from "../tags/TagsPanel";
 import { PostFormPrompt } from "../post/PostFormPrompt";
 import { UsersPanel } from "../user/UsersPanel";
+import { SearchPanel } from "../../assets/SearchPanel";
 
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { useAxiosPrivate } from "../../hooks/useAxiosPrivate";
@@ -45,6 +46,7 @@ export const HomePage = () => {
       </div>
       {w > 1000 && (
         <div className="side-panels">
+          <SearchPanel />
           <UsersPanel />
           <MemoTagsPanel tagsData={tagsData} />
         </div>
