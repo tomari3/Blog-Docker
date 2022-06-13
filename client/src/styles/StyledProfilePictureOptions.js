@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledProfilePictureOptions = styled.section`
   position: relative;
   width: clamp(300px, 50vw, 1200px);
+  max-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
