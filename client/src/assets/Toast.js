@@ -3,15 +3,19 @@ import { StyledButton } from "../styles/StyledButton";
 import { StyledToast } from "../styles/StyledToast";
 
 import { Cancel } from "./svg/Cancel";
-import { Save } from "./svg/Save";
+import { Success } from "./svg/Success";
 
-export const Toast = ({ type }) => {
+export const Toast = ({ type, msg }) => {
   return (
-    <StyledToast className="Toast" type={type}>
+    <StyledToast
+      onClick={(e) => e.stopPropagation()}
+      className="Toast"
+      type={type}
+    >
       <div className="toast-svg">
-        <Save />
+        <Success />
       </div>
-      <div className="toast-info">this action was successfull</div>
+      <div className="toast-info">{msg}</div>
       <div className="toast-exit">
         <StyledButton>
           <Cancel />
