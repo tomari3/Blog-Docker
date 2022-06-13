@@ -1,0 +1,20 @@
+{
+  "error":
+    {
+      "user":
+        {
+          "INCORRECT_PASS": "the password you provided is incorrect",
+          "INCORRECT_USERNAME": "the username you provided is incorrect",
+
+          "DUPLICATE_USERNAME": "the username you provided is already in use",
+          "DUPLICATE_EMAIL": "the email you provided is already in use",
+
+          "WEAK_PASS": "the password you provided is too weak, please enter at least 8 characters",
+          "INVALID_USERNAME": "the username you provided has invalid characters, only letters are allowed"
+        },
+      "server":
+        {
+          "SERVER_DOWN": "the server is currently down and will be up again shortly"
+        }
+    }
+}

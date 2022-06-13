@@ -8,6 +8,8 @@ import { StyledForm } from "../../styles/StyledForm";
 import { StyledButton } from "../../styles/StyledButton";
 import { StyledLink } from "../../styles/StyledLink";
 
+import { handleErrorMessage } from "../../utils/handleErrorMessage";
+
 import {
   UPDATE_FORM,
   RESET_FORM,
@@ -121,15 +123,12 @@ export const LoginForm = () => {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
-      console.log(data);
       setAuth(data);
       dispatch({ type: RESET_FORM });
       navigate(referer, { replace: true });
     } catch (error) {
-      if (error.response.data === "Unauthorized")
-        setSeverError("name or password incorrect");
-      else setSeverError("server error");
       console.log(error);
+      setSeverError(handleErrorMessage(error));
       setTimeout(() => {
         setSeverError("");
       }, 5000);

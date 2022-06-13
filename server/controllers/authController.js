@@ -50,53 +50,52 @@ exports.login = async (req, res) => {
       .json({ message: "Username and password are required." });
   }
 
-  const foundUser = await User.findOne({ username }).exec();
-  if (!foundUser) return res.sendStatus(401);
+  const foundUser = await User.findOne({ username });
+  if (!foundUser) return res.status(401).json("wrong username");
 
   const valid = utils.validPassword(password, foundUser.hash, foundUser.salt);
 
-  if (valid) {
-    const { accessToken } = utils.issueJWTAccess(foundUser);
-    const { refreshToken } = utils.issueJWTRefresh(foundUser);
+  if (!valid) return res.status(401).json("wrong password");
 
-    let newRefreshTokenArray = !cookies?.jwt
-      ? foundUser.refreshToken
-      : foundUser.refreshToken.filter((rt) => rt !== cookies.jwt);
+  const { accessToken } = utils.issueJWTAccess(foundUser);
+  const { refreshToken } = utils.issueJWTRefresh(foundUser);
 
-    if (cookies?.jwt) {
-      const oldRefreshToken = cookies.jwt;
-      const foundToken = await User.findOne({
-        refreshToken: oldRefreshToken,
-      }).exec();
+  let newRefreshTokenArray = !cookies?.jwt
+    ? foundUser.refreshToken
+    : foundUser.refreshToken.filter((rt) => rt !== cookies.jwt);
 
-      if (!foundToken) {
-        newRefreshTokenArray = [];
-      }
+  if (cookies?.jwt) {
+    const oldRefreshToken = cookies.jwt;
+    const foundToken = await User.findOne({
+      refreshToken: oldRefreshToken,
+    }).exec();
 
-      res.clearCookie("jwt", {
-        httpOnly: true,
-        secure: true,
-      });
+    if (!foundToken) {
+      newRefreshTokenArray = [];
     }
 
-    foundUser.refreshToken = [...newRefreshTokenArray, refreshToken];
-    const { _id, roles, avatar } = await foundUser.populate("avatar", "src");
-
-    res.cookie("jwt", refreshToken, {
+    res.clearCookie("jwt", {
       httpOnly: true,
       secure: true,
-      maxAge: 24 * 60 * 60 * 1000,
-    });
-
-    return res.json({
-      _id,
-      username,
-      roles,
-      accessToken,
-      avatar,
     });
   }
-  return res.sendStatus(401);
+
+  foundUser.refreshToken = [...newRefreshTokenArray, refreshToken];
+  const { _id, roles, avatar } = await foundUser.populate("avatar", "src");
+
+  res.cookie("jwt", refreshToken, {
+    httpOnly: true,
+    secure: true,
+    maxAge: 24 * 60 * 60 * 1000,
+  });
+
+  return res.json({
+    _id,
+    username,
+    roles,
+    accessToken,
+    avatar,
+  });
 };
 
 exports.logout = async (req, res) => {
