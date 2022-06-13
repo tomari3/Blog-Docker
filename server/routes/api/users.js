@@ -16,7 +16,8 @@ router
 
 router
   .route("/:id/avatar")
-  .put(upload.single("avatar"), userController.updateUserAvatarPicture);
+  .put(upload.single("avatar"), userController.updateUserAvatarPicture)
+  .delete(userController.deleteUserAvatarPicture);
 
 router.route("/:id/posts").get(userController.getPostsByUsername);
 

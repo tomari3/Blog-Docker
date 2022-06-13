@@ -45,6 +45,17 @@ export const ProfilePictureOptions = ({
     }
   };
 
+  const sendDelete = async () => {
+    const postUrl = `users/${auth._id}/avatar`;
+    const payload = {
+      srcPhoto: picture?.src,
+    };
+
+    try {
+      await axiosPrivate.delete(postUrl, payload);
+    } catch (error) {}
+  };
+
   const closeOptions = () => {
     setProfilePictureOptions(false);
   };
@@ -94,7 +105,7 @@ export const ProfilePictureOptions = ({
             </div>
           </div>
           <div className="profile-picture-options_options_option">
-            <StyledButton>
+            <StyledButton onClick={sendDelete}>
               <Trash /> <p>delete</p>
             </StyledButton>
           </div>

@@ -68,7 +68,24 @@ exports.updateUserAvatarPicture = async (req, res) => {
     user.markModified("cover");
     user = await user.save();
   }
-  return res.json(user);
+  return res.status(203).json("avatar updated");
+};
+
+exports.deleteUserAvatarPicture = async (req, res) => {
+  const { _id } = req.user;
+  const { photoSrc } = req.body;
+
+  const media = await Media.findOne({ src: photoSrc });
+
+  if (!_id.equals(media.author))
+    return res.status(401).json("cannot edit others photos");
+
+  await User.findByIdAndUpdate(_id, { $unset: { avatar: 1 } });
+
+  await cloudinary.uploader.destroy(media.public_id);
+  await media.deleteOne();
+
+  return res.status(203).json("media deleted");
 };
 
 exports.getPostsByUsername = async (req, res) => {

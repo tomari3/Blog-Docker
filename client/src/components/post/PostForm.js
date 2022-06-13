@@ -20,7 +20,7 @@ import {
   validateInput,
 } from "../../utils/formUtils";
 import { Loading } from "../../assets/Loading";
-import { handleErrorMessage } from "../../utils/handleErrorMessage";
+import { handleResponseMessage } from "../../utils/handleResponseMessage";
 
 const initialState = {
   content: {
@@ -138,7 +138,7 @@ export const PostForm = ({ className, setPostsData, setPostModal }) => {
       // console.log(data);
     } catch (error) {
       setLoadingResponse(false);
-      setSeverError(handleErrorMessage(error));
+      setSeverError(handleResponseMessage(error));
 
       setTimeout(() => {
         setSeverError("");

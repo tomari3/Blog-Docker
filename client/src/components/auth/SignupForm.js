@@ -15,7 +15,7 @@ import {
   onFocusOut,
   validateInput,
 } from "../../utils/formUtils";
-import { handleErrorMessage } from "../../utils/handleErrorMessage";
+import { handleResponseMessage } from "../../utils/handleResponseMessage";
 
 const initialState = {
   username: {
@@ -130,7 +130,7 @@ export const SignupForm = () => {
       navigate(referer, { replace: true });
     } catch (error) {
       setLoadingResponse(false);
-      setSeverError(handleErrorMessage(error));
+      setSeverError(handleResponseMessage(error));
 
       setTimeout(() => {
         setSeverError("");

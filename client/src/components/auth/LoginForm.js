@@ -8,7 +8,7 @@ import { StyledForm } from "../../styles/StyledForm";
 import { StyledButton } from "../../styles/StyledButton";
 import { StyledLink } from "../../styles/StyledLink";
 
-import { handleErrorMessage } from "../../utils/handleErrorMessage";
+import { handleResponseMessage } from "../../utils/handleResponseMessage";
 
 import {
   UPDATE_FORM,
@@ -132,7 +132,7 @@ export const LoginForm = () => {
       navigate(referer, { replace: true });
     } catch (error) {
       setLoadingResponse(false);
-      setSeverError(handleErrorMessage(error));
+      setSeverError(handleResponseMessage(error));
       setTimeout(() => {
         setSeverError("");
       }, 5000);

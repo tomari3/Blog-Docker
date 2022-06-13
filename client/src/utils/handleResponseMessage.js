@@ -1,6 +1,6 @@
 import messages from "./messages-en.json";
 
-export const handleErrorMessage = (err) => {
+export const handleResponseMessage = (err) => {
   const status = err.status;
   const data = err.response.data;
   console.log(err);
