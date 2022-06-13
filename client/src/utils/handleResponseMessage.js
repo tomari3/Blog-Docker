@@ -1,7 +1,6 @@
 import messages from "./messages-en.json";
 
 export const handleResponseMessage = (res) => {
-  console.log(res);
   const status = res?.status || res?.response?.status;
   const data = res || res?.response?.data;
   // LOGIN

@@ -72,7 +72,6 @@ export const ProfilePictureOptions = ({
 
     try {
       const { data } = await axiosPrivate.delete(postUrl, { data: payload });
-      console.log(data);
       setResponseInfo(handleResponseMessage(data));
       setResponseStatus("success");
 
@@ -95,7 +94,6 @@ export const ProfilePictureOptions = ({
 
   useEffect(() => {
     if (newPictureFile === null) return;
-    console.log(newPictureFile);
     sendNewPicture();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newPictureFile]);
