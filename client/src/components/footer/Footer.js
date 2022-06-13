@@ -3,7 +3,11 @@ import { StyledFooter } from "../../styles/StyledFooter";
 export const Footer = () => {
   return (
     <StyledFooter className="Footer">
-      <h1>footer</h1>
+      <div className="footer-info"></div>
+      <div className="footer-credit">
+        <div className="footer-credit_date">created</div>
+        <div className="footer-credit_name"></div>
+      </div>
     </StyledFooter>
   );
 };

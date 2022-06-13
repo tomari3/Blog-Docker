@@ -10,7 +10,7 @@ export const Layout = ({ toggle }) => {
 
       <Outlet />
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
