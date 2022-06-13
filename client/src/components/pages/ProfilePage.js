@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { useAuth } from "../../hooks/useAuth";
 import { useAxiosPrivate } from "../../hooks/useAxiosPrivate";
+import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 
 import { StyledProfilePage } from "../../styles/StyledProfilePage";
 
@@ -20,6 +21,7 @@ import { MemoPostGallery } from "../post/PostGallery";
 export const ProfilePage = () => {
   const { auth } = useAuth();
   const axiosPrivate = useAxiosPrivate();
+  const { width: w } = useWindowDimensions();
 
   const [userData, setUserData] = useState({});
   const [postsData, setPostsData] = useState([]);
@@ -69,31 +71,33 @@ export const ProfilePage = () => {
     <StyledProfilePage className="ProfilePage">
       <UserProfile userData={userData} />
 
-      <UsersPanel />
+      <div className="suggestions">{w > 1000 && <UsersPanel />}</div>
 
-      <StyledTabs>
-        <StyledTabList>
-          <StyledTab>
-            <p>posts</p>
-          </StyledTab>
-          <StyledTab>
-            <p>liked</p>
-          </StyledTab>
-          <StyledTab>
-            <p>saved</p>
-          </StyledTab>
-        </StyledTabList>
+      <section className="tabs">
+        <StyledTabs>
+          <StyledTabList>
+            <StyledTab>
+              <p>posts</p>
+            </StyledTab>
+            <StyledTab>
+              <p>liked</p>
+            </StyledTab>
+            <StyledTab>
+              <p>saved</p>
+            </StyledTab>
+          </StyledTabList>
 
-        <StyledTabPanel>
-          <MemoPostGallery postsData={postsData} />
-        </StyledTabPanel>
-        <StyledTabPanel>
-          <MemoPostGallery postsData={likesData} />
-        </StyledTabPanel>
-        <StyledTabPanel>
-          <MemoPostGallery postsData={savesData} />
-        </StyledTabPanel>
-      </StyledTabs>
+          <StyledTabPanel>
+            <MemoPostGallery postsData={postsData} />
+          </StyledTabPanel>
+          <StyledTabPanel>
+            <MemoPostGallery postsData={likesData} />
+          </StyledTabPanel>
+          <StyledTabPanel>
+            <MemoPostGallery postsData={savesData} />
+          </StyledTabPanel>
+        </StyledTabs>
+      </section>
     </StyledProfilePage>
   );
 };
