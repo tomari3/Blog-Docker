@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyledButton } from "../styles/StyledButton";
 import { StyledToast } from "../styles/StyledToast";
 
@@ -17,19 +17,25 @@ const handleType = (type) => {
   }
 };
 
-export const Toast = ({ type, msg }) => {
+export const Toast = ({ type, msg, setResponseStatus }) => {
   const icon = handleType(type);
-  const isOn = type ? "is-on" : "";
+
+  const isOn = type ? true : false;
+
+  const closeToast = () => {
+    setResponseStatus("");
+  };
+
   return (
     <StyledToast
       onClick={(e) => e.stopPropagation()}
-      className={`Toast ${isOn}`}
+      className={`Toast ${isOn ? "is-on" : ""}`}
       type={type}
     >
       <div className="toast-svg">{icon}</div>
       <div className="toast-info">{msg}</div>
       <div className="toast-exit">
-        <StyledButton>
+        <StyledButton onClick={closeToast}>
           <Cancel />
         </StyledButton>
       </div>

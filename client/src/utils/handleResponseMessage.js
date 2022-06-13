@@ -12,6 +12,10 @@ export const handleResponseMessage = (err) => {
     return messages.error.user.DUPLICATE_USERNAME;
   if (data === "duplicate email") return messages.error.user.DUPLICATE_EMAIL;
 
+  // PHOTOS
+  if (data === "no photo to delete")
+    return messages.error.user.NO_PHOTO_TO_DELETE;
+
   if (status === 500) return messages.error.server.SERVER_DOWN;
   if (status === 401) return messages.error.user.UNAUTHORIZED;
 };

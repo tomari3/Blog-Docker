@@ -66,7 +66,6 @@ export const ProfilePictureOptions = ({
       console.log(error);
       setResponseInfo(handleResponseMessage(error));
       setResponseStatus("error");
-      console.log(responseStatus);
     }
   };
 
@@ -83,7 +82,11 @@ export const ProfilePictureOptions = ({
 
   return (
     <ModalBasis onClick={closeOptions}>
-      <Toast type={responseStatus} msg={responseInfo} />
+      <Toast
+        type={responseStatus}
+        msg={responseInfo}
+        setResponseStatus={setResponseStatus}
+      />
       <StyledProfilePictureOptions
         className="profile-picture-options"
         onClick={(e) => e.stopPropagation()}

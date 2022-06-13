@@ -74,9 +74,8 @@ exports.updateUserAvatarPicture = async (req, res) => {
 exports.deleteUserAvatarPicture = async (req, res) => {
   const { _id } = req.user;
   const { public_id } = req.body;
-  console.log(public_id);
   const media = await Media.findOne({ public_id });
-  console.log(media);
+  if (!media) return res.status(404).json("no photo to delete");
   if (!_id.equals(media?.author))
     return res.status(401).json("cannot edit others photos");
 
