@@ -21,10 +21,12 @@ export const StyledSortOptions = styled.section`
     select {
       background-color: transparent;
       border: 0;
+      font-weight: bold;
+      color: var(--text);
+      cursor: pointer;
     }
 
     option {
-      font-weight: bold;
     }
   }
 `;
