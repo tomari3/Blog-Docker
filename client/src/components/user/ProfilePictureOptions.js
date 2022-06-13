@@ -62,10 +62,18 @@ export const ProfilePictureOptions = ({
       const { data } = await axiosPrivate.delete(postUrl, { data: payload });
       setResponseInfo(handleResponseMessage(data));
       setResponseStatus("success");
+
+      setTimeout(() => {
+        setResponseStatus("");
+      }, 5000);
     } catch (error) {
       console.log(error);
       setResponseInfo(handleResponseMessage(error));
       setResponseStatus("error");
+
+      setTimeout(() => {
+        setResponseStatus("");
+      }, 5000);
     }
   };
 
