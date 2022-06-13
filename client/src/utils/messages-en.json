@@ -10,7 +10,9 @@
           "DUPLICATE_EMAIL": "the email you provided is already in use",
 
           "WEAK_PASS": "the password you provided is too weak, please enter at least 8 characters",
-          "INVALID_USERNAME": "the username you provided has invalid characters, only letters are allowed"
+          "INVALID_USERNAME": "the username you provided has invalid characters, only letters are allowed",
+
+          "UNAUTHORIZED": "you are not authorized to do that"
         },
       "server":
         {

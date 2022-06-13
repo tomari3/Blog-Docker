@@ -62,7 +62,12 @@ export const ProfilePictureOptions = ({
       const { data } = await axiosPrivate.delete(postUrl, { data: payload });
       setResponseInfo(handleResponseMessage(data));
       setResponseStatus("success");
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+      setResponseInfo(handleResponseMessage(error));
+      setResponseStatus("error");
+      console.log(responseStatus);
+    }
   };
 
   const closeOptions = () => {

@@ -12,7 +12,7 @@ export const StyledToast = styled.article`
   gap: var(--padding);
 
   left: var(--position);
-  bottom: ${(props) => (props.type ? "var(--position)" : "-100px")};
+  bottom: -100px;
 
   height: calc(50px + var(--padding));
   border-radius: var(--radiusBigger);
@@ -22,6 +22,10 @@ export const StyledToast = styled.article`
   z-index: 2;
 
   transition: all 0.5 cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &.is-on {
+    bottom: var(--position);
+  }
 
   .toast-svg {
     div {
