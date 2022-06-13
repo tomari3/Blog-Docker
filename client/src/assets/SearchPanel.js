@@ -1,11 +1,18 @@
 import React from "react";
+import { StyledSearchPanel } from "../styles/StyledSearchPanel";
+import { Search } from "./svg/Search";
 
 export const SearchPanel = () => {
   return (
-    <section className="search-panel">
-      <div className="search-panel_wrapper">
-        <input />
+    <StyledSearchPanel className="SearchPanel">
+      <div className="search-panel">
+        <div className="search-panel_icon">
+          <Search $noHover />
+        </div>
+        <div className="search-panel_input">
+          <input />
+        </div>
       </div>
-    </section>
+    </StyledSearchPanel>
   );
 };

@@ -38,8 +38,9 @@ export const StyledSvg = styled(motion.div)`
     transition: transform 0.3s, background-color 0.5s;
   }
 
-  &:hover:not(.SwipeArrowSvg) {
-    background-color: var(--accentSofter);
+  &:hover {
+    background-color: ${({ $noHover }) =>
+      $noHover ? "" : "var(--accentSofter)"};
   }
 
   &.pop {

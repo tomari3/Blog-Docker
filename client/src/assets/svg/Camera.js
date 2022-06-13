@@ -3,10 +3,10 @@ import { StyledSvg } from "../../styles/StyledSvg";
 
 export const Camera = ({ className }) => {
   return (
-    <StyledSvg className={`CancelSvg ${className || ""} svg-wrapper`}>
+    <StyledSvg className={`CameraSvg ${className || ""} svg-wrapper`}>
       <svg
-        aria-label="Cancel"
-        className="Cancel"
+        aria-label="Camera"
+        className="Camera"
         height="16"
         role="img"
         viewBox="0 0 16 16"

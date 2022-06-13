@@ -6,7 +6,7 @@ export const theme = {
       primaryLighter: "hsla(0,0%,100%, 1)",
       primaryLight: "hsla(0,0%,99%, 1)",
       primary: "hsla(0,0%,98%, 1)",
-      primaryDark: "hsla(0,0%,88%, 1)",
+      primaryDark: "hsla(0,0%,90%, 1)",
       primaryDarker: "hsla(0,0%,78%, 1)",
 
       accentSofter: "hsla(340, 68%, 63%, .2)",
