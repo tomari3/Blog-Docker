@@ -10,6 +10,7 @@ import { SearchPanel } from "../../assets/SearchPanel";
 
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { useAxiosPrivate } from "../../hooks/useAxiosPrivate";
+import { SortPosts } from "../post/SortPosts";
 export const HomePage = () => {
   const [tagsData, setTagsData] = useState([]);
   const [postsData, setPostsData] = useState([]);
@@ -42,16 +43,7 @@ export const HomePage = () => {
     <StyledHomePage className="HomePage">
       <div className="posts">
         <PostFormPrompt setPostsData={setPostsData} />
-        <div className="posts_sort">
-          <label for="sort-select">sort:</label>
-
-          <select name="pets" id="sort-select">
-            <option value="latest">latest</option>
-            <option value="likes">likes</option>
-            <option value="saves">saves</option>
-            <option value="comments">comments</option>
-          </select>
-        </div>
+        <SortPosts />
         <MemoPostGallery postsData={postsData} />
       </div>
       {w > 1000 && (
