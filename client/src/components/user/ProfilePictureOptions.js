@@ -65,7 +65,7 @@ export const ProfilePictureOptions = ({
 
       setTimeout(() => {
         setResponseStatus("");
-      }, 5000);
+      }, 4000);
     } catch (error) {
       console.log(error);
       setResponseInfo(handleResponseMessage(error));
@@ -73,7 +73,7 @@ export const ProfilePictureOptions = ({
 
       setTimeout(() => {
         setResponseStatus("");
-      }, 5000);
+      }, 4000);
     }
   };
 
