@@ -12,7 +12,7 @@
           "WEAK_PASS": "the password you provided is too weak, please enter at least 8 characters",
           "INVALID_USERNAME": "the username you provided has invalid characters, only letters are allowed",
 
-          "NO_PHOTO_TO_DELETE": "you tried to the delete a photo that does not exists",
+          "NO_PHOTO_TO_DELETE": "you are trying to delete a photo that does not exists",
 
           "UNAUTHORIZED": "you are not authorized to do that"
         },
