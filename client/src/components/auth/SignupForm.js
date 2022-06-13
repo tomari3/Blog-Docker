@@ -13,6 +13,7 @@ import {
   onFocusOut,
   validateInput,
 } from "../../utils/formUtils";
+import { handleErrorMessage } from "../../utils/handleErrorMessage";
 
 const initialState = {
   username: {
@@ -117,9 +118,9 @@ export const SignupForm = () => {
 
     try {
       // eslint-disable-next-line no-unused-vars
-      const { data } = await axios.post(postUrl, payload);
+      await axios.post(postUrl, payload);
     } catch (error) {
-      setSeverError(error.response.data.msg);
+      setSeverError(handleErrorMessage(error));
 
       setTimeout(() => {
         setSeverError("");

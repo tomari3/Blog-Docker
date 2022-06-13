@@ -20,7 +20,7 @@ exports.signup = [
       return res.status(400).json({ errors: errors.array() });
     }
     const duplicate = await User.findOne({ username }).exec();
-    if (duplicate) return res.sendStatus(409); // Conflict
+    if (duplicate) return res.status(409).json("duplicate username"); // Conflict
 
     try {
       const saltHash = utils.genPassword(password);
@@ -36,7 +36,7 @@ exports.signup = [
       });
       return res.status(201).json({ success: `New user ${user} created!` });
     } catch (err) {
-      return res.status(500).json({ message: err.message });
+      return res.status(409).json("duplicate email");
     }
   },
 ];

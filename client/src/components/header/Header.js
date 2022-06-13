@@ -23,7 +23,7 @@ export const Header = ({ toggle, dark }) => {
           {!auth?.username ? (
             <>
               <StyledLink to="/login">login</StyledLink>
-              <StyledLink to="/signup">sing up</StyledLink>
+              <StyledLink to="/signup">sign up</StyledLink>
             </>
           ) : (
             <div className="header_nav_profile-menu">
