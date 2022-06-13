@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyledButton } from "../styles/StyledButton";
 import { StyledToast } from "../styles/StyledToast";
 
@@ -13,7 +13,7 @@ const handleType = (type) => {
     case "success":
       return <Success />;
     default:
-      return "var(--primary)";
+      return "";
   }
 };
 
