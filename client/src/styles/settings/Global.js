@@ -40,7 +40,7 @@ p, h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: background-color .3s ease, border-color .3s ease, color .3s ease;
+    transition: background-color .3s ease, border-color .3s ease;
 
   }
 
