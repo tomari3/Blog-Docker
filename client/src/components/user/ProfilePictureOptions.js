@@ -13,6 +13,8 @@ import { StyledButton } from "../../styles/StyledButton";
 import { StyledProfilePictureOptions } from "../../styles/StyledProfilePictureOptions";
 import { StyledFileInput } from "../../styles/StyledFileInput";
 
+import { Toast } from "../../assets/Toast";
+
 function useInput(init) {
   const [newPictureFile, setFile] = useState(init);
   const handleFileInput = (e) => {
@@ -69,6 +71,7 @@ export const ProfilePictureOptions = ({
 
   return (
     <ModalBasis onClick={closeOptions}>
+      <Toast type={"success"} />
       <StyledProfilePictureOptions
         className="profile-picture-options"
         onClick={(e) => e.stopPropagation()}
