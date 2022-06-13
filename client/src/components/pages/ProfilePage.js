@@ -69,35 +69,43 @@ export const ProfilePage = () => {
 
   return (
     <StyledProfilePage className="ProfilePage">
-      <UserProfile userData={userData} />
+      <section className="profile-page_content">
+        <UserProfile userData={userData} />
 
-      <div className="suggestions">{w > 1000 && <UsersPanel />}</div>
+        <section className="tabs">
+          <StyledTabs>
+            <StyledTabList>
+              <StyledTab>
+                <p>posts</p>
+              </StyledTab>
+              <StyledTab>
+                <p>liked</p>
+              </StyledTab>
+              <StyledTab>
+                <p>saved</p>
+              </StyledTab>
+            </StyledTabList>
 
-      <section className="tabs">
-        <StyledTabs>
-          <StyledTabList>
-            <StyledTab>
-              <p>posts</p>
-            </StyledTab>
-            <StyledTab>
-              <p>liked</p>
-            </StyledTab>
-            <StyledTab>
-              <p>saved</p>
-            </StyledTab>
-          </StyledTabList>
-
-          <StyledTabPanel>
-            <MemoPostGallery postsData={postsData} />
-          </StyledTabPanel>
-          <StyledTabPanel>
-            <MemoPostGallery postsData={likesData} />
-          </StyledTabPanel>
-          <StyledTabPanel>
-            <MemoPostGallery postsData={savesData} />
-          </StyledTabPanel>
-        </StyledTabs>
+            <StyledTabPanel>
+              <MemoPostGallery postsData={postsData} />
+            </StyledTabPanel>
+            <StyledTabPanel>
+              <MemoPostGallery postsData={likesData} />
+            </StyledTabPanel>
+            <StyledTabPanel>
+              <MemoPostGallery postsData={savesData} />
+            </StyledTabPanel>
+          </StyledTabs>
+        </section>
       </section>
+
+      {w > 1000 && (
+        <section className="profile-page_suggestions">
+          <div className="profile-page_suggestions_user-panel">
+            <UsersPanel />
+          </div>
+        </section>
+      )}
     </StyledProfilePage>
   );
 };

@@ -5,15 +5,20 @@ import { ProfileMenu } from "./ProfileMenu";
 import { PostForm } from "../post/PostForm";
 import { ModalBasis } from "../../styles/ModalBasis";
 
+import { useWindowDimensions } from "../../hooks/useWindowDimensions";
+
 import { StyledHeader } from "../../styles/StyledHeader";
 import { StyledLink } from "../../styles/StyledLink";
 import { StyledButton } from "../../styles/StyledButton";
 
 export const Header = ({ toggle, dark }) => {
   const [postModal, setPostModal] = useState(false);
+
+  const { width: w } = useWindowDimensions();
+
   const { auth } = useAuth();
 
-  return auth._id ? (
+  return auth._id && w > 700 ? (
     <>
       <StyledHeader className="Header">
         <div className="logo">

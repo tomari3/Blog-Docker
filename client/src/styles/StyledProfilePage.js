@@ -2,30 +2,24 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const StyledProfilePage = styled(motion.main)`
-  margin: 2rem auto;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: 1fr auto;
-  grid-template-areas: "details suggestions" "activity suggestions";
-  gap: 2rem;
-  & > section:first-child {
-    border: 1px solid var(--primaryDark);
-    background-color: var(--primaryLighter);
-  }
-
+  display: flex;
+  position: relative;
+  gap: var(--paddingBig);
   .user {
-    grid-area: details;
+    flex: 1 1 auto;
+    border-bottom: 1px solid var(--primaryDarker);
   }
 
   .user_details {
     display: grid;
     grid-template-rows: 1fr auto;
     grid-template-areas: "image" "info";
+    overflow: hidden;
   }
 
   .user_details_image-wrapper {
     grid-area: image;
-    height: 400px;
+    height: 300px;
     position: relative;
     background-color: var(--accentSofter);
   }
@@ -56,7 +50,6 @@ export const StyledProfilePage = styled(motion.main)`
     right: 1rem;
     top: 1rem;
     display: flex;
-    gap: 0.5rem;
   }
 
   .user_details_info {
@@ -69,9 +62,13 @@ export const StyledProfilePage = styled(motion.main)`
   .user_details_info_date {
     text-transform: capitalize;
   }
-  .suggestions {
-    grid-area: suggestions;
+
+  .profile-page_suggestions {
+    margin-top: var(--paddingBig);
   }
 
-  max-width: 1200px;
+  .profile-page_suggestions_user-panel {
+    position: sticky;
+    top: var(--paddingBig);
+  }
 `;

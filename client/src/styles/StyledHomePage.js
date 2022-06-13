@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 export const StyledHomePage = styled(motion.main)`
   display: flex;
+  gap: var(--paddingBig);
 
   .side-panels {
     position: relative;
@@ -16,5 +17,9 @@ export const StyledHomePage = styled(motion.main)`
 
       min-width: 300px;
     }
+  }
+
+  .SearchPanel {
+    padding: var(--paddingBig) 0;
   }
 `;

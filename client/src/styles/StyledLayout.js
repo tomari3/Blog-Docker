@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const StyledLayout = styled(motion.main)`
-  margin: var(--paddingBigger) auto;
+  margin: 0 auto;
   display: flex;
   gap: var(--paddingBigger);
   max-width: 1200px;
@@ -11,9 +11,5 @@ export const StyledLayout = styled(motion.main)`
   header {
     position: sticky;
     top: var(--paddingBigger);
-  }
-
-  main {
-    gap: var(--paddingBigger);
   }
 `;
