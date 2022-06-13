@@ -73,11 +73,11 @@ exports.updateUserAvatarPicture = async (req, res) => {
 
 exports.deleteUserAvatarPicture = async (req, res) => {
   const { _id } = req.user;
-  const { photoSrc } = req.body;
-
-  const media = await Media.findOne({ src: photoSrc });
-
-  if (!_id.equals(media.author))
+  const { public_id } = req.body;
+  console.log(public_id);
+  const media = await Media.findOne({ public_id });
+  console.log(media);
+  if (!_id.equals(media?.author))
     return res.status(401).json("cannot edit others photos");
 
   await User.findByIdAndUpdate(_id, { $unset: { avatar: 1 } });

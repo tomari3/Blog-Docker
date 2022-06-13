@@ -28,6 +28,7 @@ export const ProfilePicture = ({ userData, noPop }) => {
       {profilePictureOptions && isAuthor && !noPop && (
         <ProfilePictureOptions
           picture={src}
+          public_id={userData?.avatar?.public_id}
           setProfilePictureOptions={setProfilePictureOptions}
         />
       )}

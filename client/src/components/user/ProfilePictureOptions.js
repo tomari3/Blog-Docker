@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { useAxiosPrivate } from "../../hooks/useAxiosPrivate";
 import { useAuth } from "../../hooks/useAuth";
+import { handleResponseMessage } from "../../utils/handleResponseMessage";
 
 import { Camera } from "../../assets/svg/Camera";
 import { Edit } from "../../assets/svg/Edit";
@@ -26,11 +27,15 @@ function useInput(init) {
 export const ProfilePictureOptions = ({
   setProfilePictureOptions,
   picture,
+  public_id,
 }) => {
   const { auth } = useAuth();
   const axiosPrivate = useAxiosPrivate();
 
   const { newPictureFile, handleFileInput } = useInput(null);
+
+  const [responseStatus, setResponseStatus] = useState("");
+  const [responseInfo, setResponseInfo] = useState("");
 
   const sendNewPicture = async () => {
     let formData = new FormData();
@@ -50,11 +55,13 @@ export const ProfilePictureOptions = ({
   const sendDelete = async () => {
     const postUrl = `users/${auth._id}/avatar`;
     const payload = {
-      srcPhoto: picture?.src,
+      public_id: public_id,
     };
 
     try {
-      await axiosPrivate.delete(postUrl, payload);
+      const { data } = await axiosPrivate.delete(postUrl, { data: payload });
+      setResponseInfo(handleResponseMessage(data));
+      setResponseStatus("success");
     } catch (error) {}
   };
 
@@ -71,7 +78,7 @@ export const ProfilePictureOptions = ({
 
   return (
     <ModalBasis onClick={closeOptions}>
-      <Toast type={"success"} />
+      <Toast type={responseStatus} msg={responseInfo} />
       <StyledProfilePictureOptions
         className="profile-picture-options"
         onClick={(e) => e.stopPropagation()}
