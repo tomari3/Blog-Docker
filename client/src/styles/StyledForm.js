@@ -9,7 +9,8 @@ export const StyledForm = styled(motion.section)`
   background-color: var(--primary);
   border-radius: var(--radius);
   box-shadow: var(--shadowLight) 0px 4px 50px 0px;
-  width: max-content;
+  width: 350px;
+  transition: all 0.5s ease;
   &.wide {
     width: 500px;
   }

@@ -19,6 +19,8 @@ import {
   onFocusOut,
   validateInput,
 } from "../../utils/formUtils";
+import { Loading } from "../../assets/Loading";
+import { handleErrorMessage } from "../../utils/handleErrorMessage";
 
 const initialState = {
   content: {
@@ -69,6 +71,7 @@ export const PostForm = ({ className, setPostsData, setPostModal }) => {
   const axiosPrivate = useAxiosPrivate();
   const [formState, dispatch] = useReducer(formsReducer, initialState);
 
+  const [loadingResponse, setLoadingResponse] = useState(false);
   const [showError, setShowError] = useState(false);
   const [serverError, setSeverError] = useState("");
 
@@ -124,19 +127,18 @@ export const PostForm = ({ className, setPostsData, setPostModal }) => {
     const postUrl = `posts`;
 
     try {
+      setLoadingResponse(true);
       const { data } = await axiosPrivate.post(postUrl, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
+      setLoadingResponse(false);
       setPostsData((prevData) => [data, ...prevData]);
       dispatch({ type: RESET_FORM });
       setPostModal();
       // console.log(data);
     } catch (error) {
-      console.log(error);
-      if (error.response.status === 500)
-        setSeverError(
-          "server is having trouble uploading the image, it's probably not your fault"
-        );
+      setLoadingResponse(false);
+      setSeverError(handleErrorMessage(error));
 
       setTimeout(() => {
         setSeverError("");
@@ -165,7 +167,7 @@ export const PostForm = ({ className, setPostsData, setPostModal }) => {
       onSubmit={(e) => formSubmitHandler(e)}
     >
       <div className="form-header">
-        <h1>What's new?</h1>
+        {loadingResponse ? <h1>just a second</h1> : <h1>What's new?</h1>}
         <div className="form-err">
           {showError &&
             !formState.isFormValid &&
@@ -174,94 +176,98 @@ export const PostForm = ({ className, setPostsData, setPostModal }) => {
         </div>
       </div>
 
-      <form>
-        <div className="form-field">
-          <textarea
-            type="text"
-            name="content"
-            value={formState.content.value}
-            rows={10}
-            onChange={(e) =>
-              onInputChange("content", e.target.value, dispatch, formState)
-            }
-            onBlur={(e) =>
-              onFocusOut("content", e.target.value, dispatch, formState)
-            }
-          />
-          <label
-            className={formState.content.value ? "active" : ""}
-            htmlFor="content"
-          >
-            content
-          </label>
-          <div className="form-field-err">
-            <p>{formState.content.error}</p>
-          </div>
-        </div>
-        <div className="form-field">
-          <input
-            className={formState.tags.value ? "active" : ""}
-            type="text"
-            name="tags"
-            value={formState.tags.value}
-            onChange={(e) =>
-              onInputChange("tags", e.target.value, dispatch, formState)
-            }
-            onBlur={(e) =>
-              onFocusOut("tags", e.target.value, dispatch, formState)
-            }
-          />
-          <label
-            className={formState.tags.value ? "active" : ""}
-            htmlFor="tags"
-          >
-            tags
-          </label>
-          <div className="form-field-err">
-            <p>{formState.tags.error}</p>
-          </div>
-        </div>
-
-        <div className="row">
-          <StyledFileInput className="ImageInput">
-            <label tabIndex={0}>
-              <Image />
-              <input
-                className={formState.images.value ? "active" : ""}
-                accept=".png,.jpeg,.jpg"
-                type="file"
-                name="images"
-                multiple="multiple"
-                onInput={(e) =>
-                  addImage("images", e.target.files, dispatch, formState)
-                }
-              />
+      {loadingResponse ? (
+        <Loading />
+      ) : (
+        <form>
+          <div className="form-field">
+            <textarea
+              type="text"
+              name="content"
+              value={formState.content.value}
+              rows={10}
+              onChange={(e) =>
+                onInputChange("content", e.target.value, dispatch, formState)
+              }
+              onBlur={(e) =>
+                onFocusOut("content", e.target.value, dispatch, formState)
+              }
+            />
+            <label
+              className={formState.content.value ? "active" : ""}
+              htmlFor="content"
+            >
+              content
             </label>
-          </StyledFileInput>
-          <StyledFileInput className="GifInput">
-            <label tabIndex={0}>
-              <GIF />
-              <input
-                className={formState.images.value ? "active" : ""}
-                accept=".png,.jpeg"
-                type="file"
-                name="images"
-                multiple="multiple"
-                onInput={(e) =>
-                  addImage("images", e.target.files, dispatch, formState)
-                }
-              />
+            <div className="form-field-err">
+              <p>{formState.content.error}</p>
+            </div>
+          </div>
+          <div className="form-field">
+            <input
+              className={formState.tags.value ? "active" : ""}
+              type="text"
+              name="tags"
+              value={formState.tags.value}
+              onChange={(e) =>
+                onInputChange("tags", e.target.value, dispatch, formState)
+              }
+              onBlur={(e) =>
+                onFocusOut("tags", e.target.value, dispatch, formState)
+              }
+            />
+            <label
+              className={formState.tags.value ? "active" : ""}
+              htmlFor="tags"
+            >
+              tags
             </label>
-          </StyledFileInput>
-        </div>
+            <div className="form-field-err">
+              <p>{formState.tags.error}</p>
+            </div>
+          </div>
 
-        {formState.images.value.length > 0 && (
-          <div className="image-preview">{imagesPreview}</div>
-        )}
-        <StyledButton type="submit" $round $color $bold padding={"reg"}>
-          post
-        </StyledButton>
-      </form>
+          <div className="row">
+            <StyledFileInput className="ImageInput">
+              <label tabIndex={0}>
+                <Image />
+                <input
+                  className={formState.images.value ? "active" : ""}
+                  accept=".png,.jpeg,.jpg"
+                  type="file"
+                  name="images"
+                  multiple="multiple"
+                  onInput={(e) =>
+                    addImage("images", e.target.files, dispatch, formState)
+                  }
+                />
+              </label>
+            </StyledFileInput>
+            <StyledFileInput className="GifInput">
+              <label tabIndex={0}>
+                <GIF />
+                <input
+                  className={formState.images.value ? "active" : ""}
+                  accept=".png,.jpeg"
+                  type="file"
+                  name="images"
+                  multiple="multiple"
+                  onInput={(e) =>
+                    addImage("images", e.target.files, dispatch, formState)
+                  }
+                />
+              </label>
+            </StyledFileInput>
+          </div>
+
+          {formState.images.value.length > 0 && (
+            <div className="image-preview">{imagesPreview}</div>
+          )}
+          <StyledButton type="submit" $round $color $bold padding={"reg"}>
+            post
+          </StyledButton>
+        </form>
+      )}
     </StyledForm>
   );
 };
