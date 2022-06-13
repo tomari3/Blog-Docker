@@ -3,8 +3,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { useAxiosPrivate } from "../../hooks/useAxiosPrivate";
 import { useAuth } from "../../hooks/useAuth";
 
+import { handleResponseMessage } from "../../utils/handleResponseMessage";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 
+import { Toast } from "../../assets/Toast";
 import { StyledButton } from "../../styles/StyledButton";
 import { StyledOptions } from "../../styles/StyledOptions";
 import { Dots } from "../../assets/svg/Dots";
@@ -20,12 +22,15 @@ function useInput(init) {
   return { newCoverFile, handleFileInput };
 }
 
-export const CoverOptions = ({ children }) => {
+export const CoverOptions = ({ public_id }) => {
   const { auth } = useAuth();
   const axiosPrivate = useAxiosPrivate();
 
   const { newCoverFile, handleFileInput } = useInput(null);
   const [open, setOpen] = useState(false);
+
+  const [responseStatus, setResponseStatus] = useState("");
+  const [responseInfo, setResponseInfo] = useState("");
 
   const ref = useRef();
   const ignored = useRef();
@@ -40,10 +45,45 @@ export const CoverOptions = ({ children }) => {
       const { data } = await axiosPrivate.put(postUrl, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      console.log(data);
+      setResponseInfo(handleResponseMessage(data));
+      setResponseStatus("success");
+
+      setTimeout(() => {
+        setResponseStatus("");
+      }, 4000);
+
       formData = new FormData();
     } catch (error) {
-      console.log(error);
+      setResponseInfo(handleResponseMessage(error));
+      setResponseStatus("error");
+
+      setTimeout(() => {
+        setResponseStatus("");
+      }, 4000);
+    }
+  };
+
+  const sendDelete = async () => {
+    const postUrl = `users/${auth._id}/cover`;
+    const payload = {
+      public_id: public_id,
+    };
+
+    try {
+      const { data } = await axiosPrivate.delete(postUrl, { data: payload });
+      setResponseInfo(handleResponseMessage(data));
+      setResponseStatus("success");
+
+      setTimeout(() => {
+        setResponseStatus("");
+      }, 4000);
+    } catch (error) {
+      setResponseInfo(handleResponseMessage(error.response.data));
+      setResponseStatus("error");
+
+      setTimeout(() => {
+        setResponseStatus("");
+      }, 4000);
     }
   };
 
@@ -59,6 +99,11 @@ export const CoverOptions = ({ children }) => {
       onClick={(e) => e.stopPropagation()}
       className="CoverOptions"
     >
+      <Toast
+        type={responseStatus}
+        msg={responseInfo}
+        setResponseStatus={setResponseStatus}
+      />
       <StyledButton ref={ignored} onClick={() => setOpen(!open)}>
         <Dots />
       </StyledButton>
@@ -69,7 +114,7 @@ export const CoverOptions = ({ children }) => {
             <StyledButton className="hidden-input-file">
               <StyledFileInput>
                 <label>
-                  edit
+                  change
                   <input
                     type="file"
                     accept=".png,.jpeg"
@@ -83,7 +128,7 @@ export const CoverOptions = ({ children }) => {
           </div>
           <div className="options_option">
             <Trash />
-            <StyledButton>delete</StyledButton>
+            <StyledButton onClick={sendDelete}>delete</StyledButton>
           </div>
         </div>
       )}
