@@ -165,6 +165,12 @@ export const StyledForm = styled(motion.section)`
       &:focus-visible {
         outline: 1px solid var(--primaryDark);
       }
+
+      // get rid or user agent stylesheet
+      &:-webkit-autofill,
+      &:-webkit-autofill:focus {
+        transition: background-color 600000s 0s, color 600000s 0s;
+      }
     }
 
     .form-field-detail {
