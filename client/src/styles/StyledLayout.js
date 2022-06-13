@@ -6,6 +6,12 @@ export const StyledLayout = styled(motion.main)`
   display: flex;
   gap: var(--paddingBigger);
   max-width: 1200px;
+  position: relative;
+
+  header {
+    position: sticky;
+    top: var(--paddingBigger);
+  }
 
   main {
     gap: var(--paddingBigger);
