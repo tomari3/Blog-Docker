@@ -28,14 +28,14 @@ export const UsersPanel = () => {
   }, []);
 
   const users = usersData.map((user, index) => {
-    if (index < 10) return <UserBanner key={user._id} userData={user} />;
+    if (index < 6) return <UserBanner key={user._id} userData={user} />;
   });
 
   return (
     <StyledPanel className="UserPanel">
       <aside className="user-panel">
         <h1> Recent Users </h1>
-        {users}
+        <div className="user-panel_users">{users}</div>
       </aside>
     </StyledPanel>
   );

@@ -6,13 +6,21 @@ export const StyledPanel = styled.section`
   padding: var(--padding);
 
   h1 {
-    font-size: var(--fontSize);
+    font-size: var(--fontSizeMedium);
     padding: var(--paddingSmall);
   }
 
   aside {
     display: flex;
     flex-direction: column;
-    gap: var(--paddingSmall);
+    justify-content: center;
+    gap: var(--paddingBig);
+  }
+
+  .user-panel_users {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--paddingBig);
   }
 `;
