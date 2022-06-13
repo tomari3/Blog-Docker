@@ -132,7 +132,8 @@ export const LoginForm = () => {
       navigate(referer, { replace: true });
     } catch (error) {
       setLoadingResponse(false);
-      setSeverError(handleResponseMessage(error));
+      console.log(error);
+      setSeverError(handleResponseMessage(error.response.data));
       setTimeout(() => {
         setSeverError("");
       }, 5000);
@@ -149,108 +150,95 @@ export const LoginForm = () => {
 
   return (
     <StyledForm className="LoginForm">
-      {loadingResponse ? (
-        <Loading />
-      ) : (
-        <>
-          <div className="form-header">
-            <h1>log in</h1>
-            <div className="form-err">
-              {showError &&
-                !formState.isFormValid &&
-                "Please fill all the fields correctly"}
-              {serverError}
-            </div>
+      <div className="form-header">
+        {loadingResponse ? <Loading /> : <h1>log in</h1>}
+        <div className="form-err">
+          {showError &&
+            !formState.isFormValid &&
+            "Please fill all the fields correctly"}
+          {serverError}
+        </div>
+      </div>
+      <form onSubmit={(e) => formSubmitHandler(e)}>
+        <div className="form-field">
+          <div className="form-field-detail"></div>
+          <input
+            className={
+              formState.username.touched && !formState.username.error
+                ? "success"
+                : undefined
+            }
+            ref={userRef}
+            type="text"
+            autoComplete="off"
+            name="username"
+            value={formState.username.value}
+            onChange={(e) =>
+              onInputChange("username", e.target.value, dispatch, formState)
+            }
+            onBlur={(e) =>
+              onFocusOut("username", e.target.value, dispatch, formState)
+            }
+          />
+          <label
+            className={formState.username.value ? "active" : ""}
+            htmlFor="username"
+          >
+            username
+          </label>
+          <div className="form-field-err">
+            <p>{formState.username.error}</p>
           </div>
-          <form onSubmit={(e) => formSubmitHandler(e)}>
-            <div className="form-field">
-              <div className="form-field-detail"></div>
-              <input
-                className={
-                  formState.username.touched && !formState.username.error
-                    ? "success"
-                    : undefined
-                }
-                ref={userRef}
-                type="text"
-                autoComplete="off"
-                name="username"
-                value={formState.username.value}
-                onChange={(e) =>
-                  onInputChange("username", e.target.value, dispatch, formState)
-                }
-                onBlur={(e) =>
-                  onFocusOut("username", e.target.value, dispatch, formState)
-                }
-              />
-              <label
-                className={formState.username.value ? "active" : ""}
-                htmlFor="username"
-              >
-                username
-              </label>
-              <div className="form-field-err">
-                <p>{formState.username.error}</p>
-              </div>
-            </div>
-            <div className="form-field">
-              <div className="form-field-detail"></div>
-              <input
-                type="password"
-                name="password"
-                value={formState.password.value}
-                onChange={(e) =>
-                  onInputChange("password", e.target.value, dispatch, formState)
-                }
-                onBlur={(e) =>
-                  onFocusOut("password", e.target.value, dispatch, formState)
-                }
-              />
-              <label
-                className={formState.password.value ? "active" : ""}
-                htmlFor="password"
-              >
-                password
-              </label>
-              <div className="form-field-err">
-                <p>{formState.password.error}</p>
-              </div>
-            </div>
-            <div className="form-field checkbox">
-              <div className="form-field-detail"></div>
-              <input
-                type="checkbox"
-                name="persist"
-                onChange={togglePersist}
-                checked={persist}
-              />
-              <label htmlFor="persist">trust this device</label>
-              <div className="form-field-err">
-                <p>{}</p>
-              </div>
-            </div>
-            <StyledButton
-              fontSize={"reg"}
-              padding={"small"}
-              $round
-              $color
-              $bold
-            >
-              log in
-            </StyledButton>
-            <div className="suggestions">
-              <div className="suggestion">
-                Don't have an account?{" "}
-                <StyledLink to="/signup">Sign up</StyledLink>
-              </div>
-              <div className="suggestion">
-                forgot your password?{" "}
-                <StyledLink to="/reset">reset password</StyledLink>
-              </div>
-            </div>
-          </form>
-        </>
-      )}
+        </div>
+        <div className="form-field">
+          <div className="form-field-detail"></div>
+          <input
+            type="password"
+            name="password"
+            value={formState.password.value}
+            onChange={(e) =>
+              onInputChange("password", e.target.value, dispatch, formState)
+            }
+            onBlur={(e) =>
+              onFocusOut("password", e.target.value, dispatch, formState)
+            }
+          />
+          <label
+            className={formState.password.value ? "active" : ""}
+            htmlFor="password"
+          >
+            password
+          </label>
+          <div className="form-field-err">
+            <p>{formState.password.error}</p>
+          </div>
+        </div>
+        <div className="form-field checkbox">
+          <div className="form-field-detail"></div>
+          <input
+            type="checkbox"
+            name="persist"
+            onChange={togglePersist}
+            checked={persist}
+          />
+          <label htmlFor="persist">trust this device</label>
+          <div className="form-field-err">
+            <p>{}</p>
+          </div>
+        </div>
+        <StyledButton fontSize={"reg"} padding={"small"} $round $color $bold>
+          log in
+        </StyledButton>
+        <div className="suggestions">
+          <div className="suggestion">
+            Don't have an account? <StyledLink to="/signup">Sign up</StyledLink>
+          </div>
+          <div className="suggestion">
+            forgot your password?{" "}
+            <StyledLink to="/reset">reset password</StyledLink>
+          </div>
+        </div>
+      </form>
     </StyledForm>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useRef } from "react";
+import React, { useState, useReducer, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import axios from "../../utils/axios";
@@ -72,6 +72,10 @@ export const SignupForm = () => {
 
   const userRef = useRef();
 
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
+
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
@@ -141,7 +145,7 @@ export const SignupForm = () => {
   return (
     <StyledForm className="SignUpForm">
       <div className="form-header">
-        <h1>sign up</h1>
+        {loadingResponse ? <Loading /> : <h1>sign up</h1>}
         <div className="form-err">
           {showError &&
             !formState.isFormValid &&
@@ -149,150 +153,141 @@ export const SignupForm = () => {
           {serverError}
         </div>
       </div>
-      {loadingResponse ? (
-        <Loading />
-      ) : (
-        <form onSubmit={(e) => formSubmitHandler(e)}>
-          <div className="form-field">
-            <div className="form-field-detail"></div>
-            <input
-              className={
-                formState.username.touched && !formState.username.error
-                  ? "success"
-                  : undefined
-              }
-              ref={userRef}
-              autoComplete="off"
-              type="text"
-              name="username"
-              value={formState.username.value}
-              onChange={(e) =>
-                onInputChange("username", e.target.value, dispatch, formState)
-              }
-              onBlur={(e) =>
-                onFocusOut("username", e.target.value, dispatch, formState)
-              }
-            />
-            <label
-              className={formState.username.value ? "active" : ""}
-              htmlFor="username"
-            >
-              username
-            </label>
-            <div className="form-field-err">
-              <p>{formState.username.error}</p>
-            </div>
+
+      <form onSubmit={(e) => formSubmitHandler(e)}>
+        <div className="form-field">
+          <div className="form-field-detail"></div>
+          <input
+            className={
+              formState.username.touched && !formState.username.error
+                ? "success"
+                : undefined
+            }
+            ref={userRef}
+            autoComplete="off"
+            type="text"
+            name="username"
+            value={formState.username.value}
+            onChange={(e) =>
+              onInputChange("username", e.target.value, dispatch, formState)
+            }
+            onBlur={(e) =>
+              onFocusOut("username", e.target.value, dispatch, formState)
+            }
+          />
+          <label
+            className={formState.username.value ? "active" : ""}
+            htmlFor="username"
+          >
+            username
+          </label>
+          <div className="form-field-err">
+            <p>{formState.username.error}</p>
           </div>
-          <div className="form-field">
-            <div className="form-field-detail"></div>
-            <input
-              className={
-                formState.email.touched && !formState.email.error
-                  ? "success"
-                  : undefined
-              }
-              type="text"
-              name="email"
-              value={formState.email.value}
-              onChange={(e) =>
-                onInputChange("email", e.target.value, dispatch, formState)
-              }
-              onBlur={(e) =>
-                onFocusOut("email", e.target.value, dispatch, formState)
-              }
-            />
-            <label
-              className={formState.email.value ? "active" : ""}
-              htmlFor="email"
-            >
-              email
-            </label>
-            <div className="form-field-err">
-              <p>{formState.email.error}</p>
-            </div>
+        </div>
+        <div className="form-field">
+          <div className="form-field-detail"></div>
+          <input
+            className={
+              formState.email.touched && !formState.email.error
+                ? "success"
+                : undefined
+            }
+            type="text"
+            name="email"
+            value={formState.email.value}
+            onChange={(e) =>
+              onInputChange("email", e.target.value, dispatch, formState)
+            }
+            onBlur={(e) =>
+              onFocusOut("email", e.target.value, dispatch, formState)
+            }
+          />
+          <label
+            className={formState.email.value ? "active" : ""}
+            htmlFor="email"
+          >
+            email
+          </label>
+          <div className="form-field-err">
+            <p>{formState.email.error}</p>
           </div>
-          <div className="form-field">
-            <div className="form-field-detail"></div>
-            <input
-              className={
-                formState.password.touched &&
-                !formState.password.error &&
-                "success"
-              }
-              type="password"
-              name="password"
-              value={formState.password.value}
-              onChange={(e) =>
-                onInputChange("password", e.target.value, dispatch, formState)
-              }
-              onBlur={(e) =>
-                onFocusOut("password", e.target.value, dispatch, formState)
-              }
-            />
-            <label
-              className={formState.password.value ? "active" : ""}
-              htmlFor="password"
-            >
-              password
-            </label>
-            <div className="form-field-err">
-              <p>{formState.password.error}</p>
-            </div>
+        </div>
+        <div className="form-field">
+          <div className="form-field-detail"></div>
+          <input
+            className={
+              formState.password.touched &&
+              !formState.password.error &&
+              "success"
+            }
+            type="password"
+            name="password"
+            value={formState.password.value}
+            onChange={(e) =>
+              onInputChange("password", e.target.value, dispatch, formState)
+            }
+            onBlur={(e) =>
+              onFocusOut("password", e.target.value, dispatch, formState)
+            }
+          />
+          <label
+            className={formState.password.value ? "active" : ""}
+            htmlFor="password"
+          >
+            password
+          </label>
+          <div className="form-field-err">
+            <p>{formState.password.error}</p>
           </div>
-          <div className="form-field">
-            <div className="form-field-detail"></div>
-            <input
-              // className={!formState.passwordConfirm.error && "success"}
-              type="password"
-              name="passwordConfirm"
-              value={formState.passwordConfirm.value}
-              onChange={(e) =>
-                onInputChange(
-                  "passwordConfirm",
-                  e.target.value,
-                  dispatch,
-                  formState
-                )
-              }
-              onBlur={(e) =>
-                onFocusOut(
-                  "passwordConfirm",
-                  e.target.value,
-                  dispatch,
-                  formState
-                )
-              }
-            />
-            <label
-              className={
-                formState.passwordConfirm.value ||
-                formState.passwordConfirm.active
-                  ? "active"
-                  : ""
-              }
-              htmlFor="password"
-            >
-              confirm password
-            </label>
-            <div className="form-field-err">
-              <p>{formState.passwordConfirm.error}</p>
-            </div>
+        </div>
+        <div className="form-field">
+          <div className="form-field-detail"></div>
+          <input
+            // className={!formState.passwordConfirm.error && "success"}
+            type="password"
+            name="passwordConfirm"
+            value={formState.passwordConfirm.value}
+            onChange={(e) =>
+              onInputChange(
+                "passwordConfirm",
+                e.target.value,
+                dispatch,
+                formState
+              )
+            }
+            onBlur={(e) =>
+              onFocusOut("passwordConfirm", e.target.value, dispatch, formState)
+            }
+          />
+          <label
+            className={
+              formState.passwordConfirm.value ||
+              formState.passwordConfirm.active
+                ? "active"
+                : ""
+            }
+            htmlFor="password"
+          >
+            confirm password
+          </label>
+          <div className="form-field-err">
+            <p>{formState.passwordConfirm.error}</p>
           </div>
-          <StyledButton fontSize={"reg"} padding={"small"} $round $color $bold>
-            sign up
-          </StyledButton>
-          <div className="suggestions">
-            <div className="suggestion">
-              already have an account?{" "}
-              <StyledLink to="/login">log in</StyledLink>
-            </div>
-            <div className="suggestion">
-              forgot your password?
-              <StyledLink to="/reset">reset password</StyledLink>
-            </div>
+        </div>
+        <StyledButton fontSize={"reg"} padding={"small"} $round $color $bold>
+          sign up
+        </StyledButton>
+        <div className="suggestions">
+          <div className="suggestion">
+            already have an account? <StyledLink to="/login">log in</StyledLink>
           </div>
-        </form>
-      )}
+          <div className="suggestion">
+            forgot your password?
+            <StyledLink to="/reset">reset password</StyledLink>
+          </div>
+        </div>
+      </form>
     </StyledForm>
   );
 };

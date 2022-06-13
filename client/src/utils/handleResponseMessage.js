@@ -18,5 +18,4 @@ export const handleResponseMessage = (res) => {
   if (data === "avatar updated") return messages.success.user.AVATAR_UPDATED;
 
   if (status === 500) return messages.error.server.SERVER_DOWN;
-  if (status === 401) return messages.error.user.UNAUTHORIZED;
 };

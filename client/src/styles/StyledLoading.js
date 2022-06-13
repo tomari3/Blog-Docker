@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const StyledLoading = styled.div`
   .spinner {
-    width: 40px;
-    height: 40px;
-    margin: 40px auto;
+    width: clamp(24px, 100%, 48px);
+    aspect-ratio: 1;
+    margin: 24px auto;
     background-color: var(--accentSoft);
 
     border-radius: 100%;
