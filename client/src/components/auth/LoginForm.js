@@ -140,6 +140,34 @@ export const LoginForm = () => {
     }
   };
 
+  const guestLogin = async () => {
+    const payload = {
+      username: "guest",
+      password: "12345678",
+    };
+
+    const postUrl = `auth/login`;
+
+    try {
+      setLoadingResponse(true);
+      const { data } = await axios.post(postUrl, payload, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      });
+      setLoadingResponse(false);
+      setAuth(data);
+      dispatch({ type: RESET_FORM });
+      navigate(referer, { replace: true });
+    } catch (error) {
+      setLoadingResponse(false);
+      console.log(error);
+      setSeverError(handleResponseMessage(error.response.data));
+      setTimeout(() => {
+        setSeverError("");
+      }, 5000);
+    }
+  };
+
   const togglePersist = () => {
     setPersist((prev) => !prev);
   };
@@ -230,6 +258,16 @@ export const LoginForm = () => {
           log in
         </StyledButton>
         <div className="suggestions">
+          <StyledButton
+            onClick={guestLogin}
+            fontSize={"reg"}
+            padding={"small"}
+            $round
+            $color
+            $bold
+          >
+            I'm a guest
+          </StyledButton>
           <div className="suggestion">
             Don't have an account? <StyledLink to="/signup">Sign up</StyledLink>
           </div>
