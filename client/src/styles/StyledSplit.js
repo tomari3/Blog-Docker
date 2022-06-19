@@ -5,13 +5,15 @@ export const StyledSplit = styled.main`
   flex-wrap: wrap-reverse;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  padding: var(--paddingBigger);
-  margin: 10rem 0;
+  gap: var(--paddingBigger);
+  margin: auto 0;
+  justify-content: center;
+  align-items: center;
+  .LoginForm {
+    flex: 1 1 300px;
+  }
 
   .hero {
-    padding: var(--paddingBigger);
-    width: clamp(300px, 40vw, 1000px);
-    height: 50vh;
+    flex: 1 0 400px;
   }
 `;

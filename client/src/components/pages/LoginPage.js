@@ -6,10 +6,9 @@ export const LoginPage = () => {
   return (
     <StyledSplit className="LogInPage">
       <div className="hero">
-        <h1>Welcome to THESOCIAL</h1>
         <PeopleHero />
       </div>
-      <LoginForm className="main" />
+      <LoginForm />
     </StyledSplit>
   );
 };
