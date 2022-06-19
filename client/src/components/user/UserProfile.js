@@ -12,7 +12,7 @@ export const UserProfile = ({ userData }) => {
   const isAuthor = userData?._id === auth?._id;
 
   const DEFAULT_VALUE =
-    "https://res.cloudinary.com/dv32amiu2/image/upload/v1654709446/t8v9r5wdz4fevb9rrtjs.jpg";
+    "https://res.cloudinary.com/dv32amiu2/image/upload/v1655620467/cnm4vky3hmhteanmpwho.jpg";
   const src = userData?.cover?.src || DEFAULT_VALUE;
 
   return (

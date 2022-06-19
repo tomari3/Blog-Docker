@@ -7,7 +7,6 @@ export const StyledProfilePage = styled(motion.main)`
   gap: var(--paddingBig);
 
   .profile-page_content {
-    min-width: 375px;
   }
 
   .user {
