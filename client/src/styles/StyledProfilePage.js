@@ -5,6 +5,11 @@ export const StyledProfilePage = styled(motion.main)`
   display: flex;
   position: relative;
   gap: var(--paddingBig);
+
+  .profile-page_content {
+    min-width: 375px;
+  }
+
   .user {
     flex: 1 1 auto;
     border-bottom: 1px solid var(--primaryDarker);

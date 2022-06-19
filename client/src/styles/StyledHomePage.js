@@ -5,6 +5,10 @@ export const StyledHomePage = styled(motion.main)`
   display: flex;
   gap: var(--paddingBig);
 
+  .posts {
+    min-width: 375px;
+  }
+
   .side-panels {
     position: relative;
     display: flex;
