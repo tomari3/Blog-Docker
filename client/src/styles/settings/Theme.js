@@ -13,7 +13,7 @@ export const theme = {
       accentSoft: "hsla(340, 68%, 63%, .5)",
       accentLighter: "hsla(340, 68%, 73%, 1)",
       accentLight: "hsla(340, 68%, 63%, 1)",
-      accent: "hsla(340, 68%, 53%, 1)",
+      accent: "hsl(214, 89%, 52%, 1)",
       accentDark: "hsla(340, 68%, 43%, 1)",
       accentDarker: "hsla(340, 68%, 33%, 1)",
 
@@ -52,7 +52,7 @@ export const theme = {
       accentSoft: "hsla(340, 68%, 63%, .5)",
       accentLighter: "hsla(340, 68%, 73%, 1)",
       accentLight: "hsla(340, 68%, 63%, 1)",
-      accent: "hsla(340, 68%, 53%, 1)",
+      accent: "hsl(214, 89%, 52%, 1)",
       accentDark: "hsla(340, 68%, 43%, 1)",
       accentDarker: "hsla(340, 68%, 33%, 1)",
 
