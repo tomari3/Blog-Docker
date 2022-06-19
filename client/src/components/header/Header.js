@@ -23,7 +23,7 @@ export const Header = ({ toggle, dark }) => {
       <StyledHeader className="Header">
         <div className="logo">
           <StyledLink $color to="/">
-            <h1>THE SOCIAL</h1>
+            <h1 className="special-font">THE SOCIAL</h1>
           </StyledLink>
         </div>
         <div className="header">

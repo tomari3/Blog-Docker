@@ -44,4 +44,8 @@ export const StyledHeader = styled(motion.header)`
       font-weight: bold;
     }
   }
+
+  .special-font {
+    font-family: "Playfair Display", serif;
+  }
 `;

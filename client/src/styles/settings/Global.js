@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import { darkTheme, lightTheme } from "./Theme";
 export const Global = createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,200&display=swap&family=Playfair+Display:ital@1&display=swap');
 
 /*
   Josh's Custom CSS Reset
