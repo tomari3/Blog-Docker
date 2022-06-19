@@ -11,34 +11,20 @@ export const StyledProfileMenu = styled.article`
     font-size: 1.2rem;
     font-weight: bold;
     text-transform: capitalize;
+    padding: var(--padding) 0;
   }
 
   .profile-menu_dropdown_options {
     display: flex;
     flex-direction: column;
     gap: var(--paddingSmall);
-
     h1 {
       text-transform: capitalize;
       font-weight: bold;
       color: var(--text);
     }
-  }
-
-  .profile-menu_options_dropdown_settings {
-    div {
-      display: flex;
-      flex-direction: column;
-      gap: var(--paddingSmall);
-      padding: var(--paddingSmall);
-    }
-  }
-
-  .profile-menu_options_dropdown_system {
-    div {
-      display: flex;
-      justify-content: space-between;
-      padding: var(--paddingSmall);
+    button {
+      text-align: left;
     }
   }
 `;

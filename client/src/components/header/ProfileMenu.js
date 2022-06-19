@@ -34,25 +34,13 @@ export const ProfileMenu = ({ username, toggle }) => {
             </div>
           </div>
           <div className="profile-menu_dropdown_options">
-            <div className="profile-menu_options_dropdown_settings">
-              <h1>general</h1>
-              <div>
-                <StyledLink to={`/${auth.username}`}>profile</StyledLink>
-                <StyledLink to="/settings">friends</StyledLink>
-                <StyledLink to="/settings">saved</StyledLink>
-              </div>
-            </div>
-            <div className="profile-menu_options_dropdown_system">
-              <h1>system</h1>
-              <div>
-                <StyledLink onClick={toggle} as="button">
-                  dark
-                </StyledLink>
-                <StyledLink onClick={signOut} as="button">
-                  sign out
-                </StyledLink>
-              </div>
-            </div>
+            <StyledLink to={`/${auth.username}`}>profile</StyledLink>
+            <StyledLink onClick={toggle} as="button">
+              Dark
+            </StyledLink>
+            <StyledLink onClick={signOut} as="button">
+              sign out
+            </StyledLink>
           </div>
         </section>
       </div>

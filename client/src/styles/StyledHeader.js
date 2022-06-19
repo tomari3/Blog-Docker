@@ -6,14 +6,14 @@ export const StyledHeader = styled(motion.header)`
   display: flex;
   flex-direction: column;
   gap: var(--padding);
-  background-color: var(--primaryLighter);
-  border-radius: var(--radius);
-  box-shadow: var(--cardShadowXSmall);
   .logo {
     padding: var(--padding);
   }
 
   .header {
+    background-color: var(--primaryLighter);
+    border-radius: var(--radius);
+    box-shadow: var(--cardShadowXSmall);
     padding: var(--padding);
     width: clamp(50px, 300px, 30vw);
     flex: 1;
