@@ -18,7 +18,7 @@ export const StyledPost = styled(motion.article)`
   display: flex;
   flex-direction: column;
 
-  border: 1px solid var(--primaryDark);
+  border-radius: var(--radiusBig);
   border-bottom: 0;
 
   position: relative;

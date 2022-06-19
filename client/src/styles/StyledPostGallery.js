@@ -8,4 +8,5 @@ export const StyledPostGallery = styled(motion.section)`
 
   display: flex;
   flex-wrap: wrap;
+  gap: var(--padding);
 `;
