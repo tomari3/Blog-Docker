@@ -8,10 +8,10 @@ export const StyledSplit = styled.main`
   width: 100%;
   padding: var(--paddingBigger);
   margin: 10rem 0;
+
   .hero {
     padding: var(--paddingBigger);
     width: clamp(300px, 40vw, 1000px);
     height: 50vh;
-    background-color: var(--accent);
   }
 `;
