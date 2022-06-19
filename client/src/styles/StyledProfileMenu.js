@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledProfileMenu = styled.article`
   .profile-menu_img {
+    width: 48px;
     border-radius: 100%;
     aspect-ratio: 1;
     overflow: hidden;

@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const StyledPanel = styled.section`
   background-color: var(--primaryLighter);
-  border: 1px solid var(--primaryDark);
+  border-radius: var(--radius);
   padding: var(--padding);
   width: 300px;
+  box-shadow: var(--cardShadowXSmall);
   h1 {
     font-size: var(--fontSizeMedium);
     padding: var(--paddingSmall);

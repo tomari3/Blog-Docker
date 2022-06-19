@@ -19,7 +19,7 @@ export const StyledPost = styled(motion.article)`
   flex-direction: column;
 
   border-radius: var(--radiusBig);
-  border-bottom: 0;
+  box-shadow: var(--cardShadowLarge);
 
   position: relative;
 

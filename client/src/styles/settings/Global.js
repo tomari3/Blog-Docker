@@ -80,6 +80,13 @@ text-decoration:none;
     --radiusBigger: ${({ theme }) => theme.radiusBigger};
     --radiusHuge: ${({ theme }) => theme.radiusHuge};
 
+    --cardShadowXSmall: ${({ theme }) => theme.cardShadowXSmall};
+    --cardShadowSmall: ${({ theme }) => theme.cardShadowSmall};
+    --cardShadowMedium: ${({ theme }) => theme.cardShadowMedium};
+    --cardShadowLarge: ${({ theme }) => theme.cardShadowLarge};
+    --cardShadowLargeInset: ${({ theme }) => theme.cardShadowLargeInset};
+    --cardShadowXLarge: ${({ theme }) => theme.cardShadowXLarge};
+
     --fontSizeTiny: ${({ theme }) => theme.fontSizeTiny};
     --fontSizeSmaller: ${({ theme }) => theme.fontSizeSmaller};
     --fontSizeSmall: ${({ theme }) => theme.fontSizeSmall};

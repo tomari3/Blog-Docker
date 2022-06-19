@@ -104,6 +104,19 @@ export const theme = {
   fontSizeBig: "2.3rem",
   fontSizeBigger: "3.1rem",
   fontSizeHuge: "4.2em",
+
+  cardShadowXSmall:
+    "0 2px 5px -1px rgba(50,50,93,0.25),0 1px 3px -1px rgba(0,0,0,0.3)",
+  cardShadowSmall:
+    "0 6px 12px -2px rgba(50,50,93,0.25),0 3px 7px -3px rgba(0,0,0,0.3)",
+  cardShadowMedium:
+    "0 13px 27px -5px rgba(50,50,93,0.25),0 8px 16px -8px rgba(0,0,0,0.3)",
+  cardShadowLarge:
+    "0 30px 60px -12px rgba(50,50,93,0.25),0 18px 36px -18px rgba(0,0,0,0.3)",
+  cardShadowLargeInset:
+    "inset 0 30px 60px -12px rgba(50,50,93,0.25),inset 0 18px 36px -18px rgba(0,0,0,0.3)",
+  cardShadowXLarge:
+    "0 50px 100px -20px rgba(50,50,93,0.25),0 30px 60px -30px rgba(0,0,0,0.3)",
 };
 
 export const lightTheme = css`
@@ -144,29 +157,6 @@ export const lightTheme = css`
   --shadow: ${({ theme }) => theme.colors.light.shadow};
   --shadowDark: ${({ theme }) => theme.colors.light.shadowDark};
   --shadowDarker: ${({ theme }) => theme.colors.light.shadowDarker};
-
-  --paddingSmaller: ${({ theme }) => theme.colors.light.paddingSmaller};
-  --paddingSmall: ${({ theme }) => theme.colors.light.paddingSmall};
-  --padding: ${({ theme }) => theme.colors.light.padding};
-  --paddingBig: ${({ theme }) => theme.colors.light.paddingBig};
-  --paddingBigger: ${({ theme }) => theme.colors.light.paddingBigger};
-
-  --radiusSmaller: ${({ theme }) => theme.colors.light.radiusSmaller};
-  --radiusSmall: ${({ theme }) => theme.colors.light.radiusSmall};
-  --radius: ${({ theme }) => theme.colors.light.radius};
-  --radiusBig: ${({ theme }) => theme.colors.light.radiusBig};
-  --radiusBigger: ${({ theme }) => theme.colors.light.radiusBigger};
-  --radiusHuge: ${({ theme }) => theme.colors.light.radiusHuge};
-
-  --fontSizeTiny: ${({ theme }) => theme.colors.light.fontSizeTiny};
-  --fontSizeSmaller: ${({ theme }) => theme.colors.light.fontSizeSmaller};
-  --fontSizeSmall: ${({ theme }) => theme.colors.light.fontSizeSmall};
-  --fontSize: ${({ theme }) => theme.colors.light.fontSize};
-  --fontSizeMedium: ${({ theme }) => theme.colors.light.fontSizeMedium};
-  --fontSizeMediumBig: ${({ theme }) => theme.colors.light.fontSizeMediumBig};
-  --fontSizeBig: ${({ theme }) => theme.colors.light.fontSizeBig};
-  --fontSizeBigger: ${({ theme }) => theme.colors.light.fontSizeBigger};
-  --fontSizeHuge: ${({ theme }) => theme.colors.light.fontSizeHuge};
 `;
 
 export const darkTheme = css`
