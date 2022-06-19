@@ -15,6 +15,7 @@ import { PostOptions } from "./PostOptions";
 import { PostContent } from "./PostContent";
 import { MediaCarousel } from "./MediaCarousel";
 import { ProfilePicture } from "../user/ProfilePicture";
+import { StyledButton } from "../../styles/StyledButton";
 
 export const Post = ({ postData }) => {
   const [likesData, setLikesData] = useState(postData.likes);
@@ -38,35 +39,6 @@ export const Post = ({ postData }) => {
     return index >= 4 ? null : <Tag key={tag._id} tagData={tag} />;
   });
 
-  const postDetails = (
-    <div className="post-content">
-      <div className="post-content-details">
-        <div className="post-content-details_img">
-          <ProfilePicture userData={author} />
-        </div>
-        <StyledLink
-          to={`/${author?.username}`}
-          className="post-content-details_username"
-        >
-          {author?.username}
-        </StyledLink>
-        <p className="post-content-details_date">{timeAgo(date)}</p>
-      </div>
-      <div className="post-content_tags">{tagsList}</div>
-
-      <div className="post-content_content">
-        <PostContent
-          postId={_id}
-          isEditMode={isPostEditMode}
-          setIsEditMode={setIsPostEditMode}
-          postContent={postContent}
-          setPostContent={setPostContent}
-        />
-        <MediaCarousel mediaData={media} />
-      </div>
-    </div>
-  );
-
   const amount = commentsData.length;
 
   return (
@@ -81,7 +53,48 @@ export const Post = ({ postData }) => {
           setIsDeleted={setIsDeleted}
         />
       </div>
-      {postDetails}
+
+      <div className="post-content">
+        <div className="post-content-details">
+          <div className="post-content-details_img">
+            <ProfilePicture userData={author} />
+          </div>
+          <StyledLink
+            to={`/${author?.username}`}
+            className="post-content-details_username"
+          >
+            {author?.username}
+          </StyledLink>
+          <p className="post-content-details_date">{timeAgo(date)}</p>
+        </div>
+        <div className="post-content_tags">{tagsList}</div>
+
+        <div className="post-content_content">
+          <PostContent
+            postId={_id}
+            isEditMode={isPostEditMode}
+            setIsEditMode={setIsPostEditMode}
+            postContent={postContent}
+            setPostContent={setPostContent}
+          />
+          <MediaCarousel mediaData={media} />
+        </div>
+        <div className="post-social">
+          <div className="post-social-likes">
+            {likesData.length ? `${likesData.length} likes` : ""}
+          </div>
+          <div className="post-social-comments">
+            <StyledButton
+              fontSize="small"
+              onClick={() => setCommentsModal(!commentsModal)}
+            >
+              {commentsData.length
+                ? `see all ${commentsData.length} comments`
+                : ""}
+            </StyledButton>
+          </div>
+        </div>
+      </div>
       <div className="post-interactions">
         <LikeBtn
           likesData={likesData}

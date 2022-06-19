@@ -34,11 +34,6 @@ export const LikeBtn = ({ postId, likesData, setLikesData }) => {
 
   return (
     <div className="interaction-btn">
-      <StyledButton fontSize={"small"} className="amount">
-        <div>
-          <p>{likesData.length > 0 ? likesData.length : null}</p>
-        </div>
-      </StyledButton>
       <StyledButton
         className="LikeBtn"
         onClick={popAnimation}

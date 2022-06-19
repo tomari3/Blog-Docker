@@ -40,7 +40,7 @@ export const StyledPost = styled(motion.article)`
   .post-content {
     flex: 1;
     border-bottom: 1px solid var(--primaryDark);
-    padding-bottom: 2rem;
+    padding-bottom: var(--padding);
     margin-bottom: 1rem;
   }
   .post-content_content {
@@ -107,6 +107,14 @@ export const StyledPost = styled(motion.article)`
     display: flex;
     gap: 1rem;
     padding: 0.5rem 0;
+  }
+
+  .post-social {
+    margin-top: var(--padding);
+    padding: 0 var(--padding);
+    font-size: var(--fontSizeSmall);
+    display: flex;
+    justify-content: space-between;
   }
 
   .post-interactions {

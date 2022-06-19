@@ -35,11 +35,6 @@ export const SaveBtn = ({ postId, savesData, setSavesData }) => {
 
   return (
     <div className="interaction-btn">
-      <StyledButton className="amount" fontSize={"small"}>
-        <div>
-          <p>{savesData.length > 0 ? savesData.length : null}</p>
-        </div>
-      </StyledButton>
       <StyledButton
         className="SaveBtn"
         onClick={popAnimation}
