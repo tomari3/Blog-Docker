@@ -32,7 +32,7 @@ exports.signup = [
         username: req.body.username,
         hash,
         salt,
-        roles: { Admin: 5150, Editor: 1984, User: 2001 },
+        roles: { User: 2001 },
       });
       return res.status(201).json({ success: `New user ${user} created!` });
     } catch (err) {

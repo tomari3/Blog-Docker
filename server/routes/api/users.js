@@ -2,6 +2,9 @@ const express = require("express");
 
 const router = express.Router();
 
+// const ROLES_LIST = require("../../config/roles_list");
+// const verifyRoles = require("../../middleware/verifyRoles");
+
 const userController = require("../../controllers/userController");
 
 const upload = require("../../config/multer");
